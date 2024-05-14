@@ -1,0 +1,264 @@
+body {
+    margin: 0;
+    /*background-color:  #1d568b;*/
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    animation: background 15s infinite alternate;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/* START PAGE */ 
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes background {
+    0% {
+      background: #eca8f1;
+      box-shadow: 0 -200px 100px -100px rgb(243, 208, 144) inset;
+    }
+    10% {
+        background: rgb(238, 70, 222);
+        box-shadow: 0 -200px 100px -100px rgb(246, 197, 106) inset;
+    }
+    20% {
+        background: rgb(240, 53, 149);
+        box-shadow: 0 -200px 100px -100px rgb(251, 179, 46) inset;
+    }
+    30% {
+        background: rgb(247, 50, 132);
+        box-shadow: 0 -200px 100px -100px rgb(251, 163, 0) inset;
+    }
+    40% {
+        background: rgb(243, 133, 16);
+        box-shadow: 0 -200px 100px -100px rgb(255, 132, 0) inset;
+    }
+    50% {
+        background: #ff7402;
+        box-shadow: 0 -200px 100px -100px rgb(255, 115, 0) inset;
+    }
+    60% {
+        background: rgb(243, 133, 16);
+        box-shadow: 0 -200px 100px -100px rgb(255, 132, 0) inset;
+    }
+    70% {
+        background: rgb(247, 50, 132);
+        box-shadow: 0 -200px 100px -100px rgb(251, 163, 0) inset;
+    }
+    80% {
+        background: rgb(240, 53, 149);
+        box-shadow: 0 -200px 100px -100px rgb(251, 179, 46) inset;
+    }
+    90% {
+        background: rgb(238, 70, 222);
+        box-shadow: 0 -200px 100px -100px rgb(246, 197, 106) inset;
+    }
+    100% {
+        background: #eca8f1;
+        box-shadow: 0 -200px 100px -100px rgb(243, 208, 144) inset;
+      }
+  }
+
+  .animation-container {
+    display: none;
+  }
+
+.text {
+    color: black;
+    font-family: /*"amatic-sc", */ monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden; 
+    border-right: .15em solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    display: none;
+    animation: 
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+.hello {
+    position: relative;
+    top: -100px;
+}
+  
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #c025cb }
+}
+
+.animation-container {
+    margin-top: 130px;
+    height: 200px;
+}
+
+.plane {
+    position: absolute;
+    animation: slide 5s linear infinite;
+    top: 320px;
+    height: 200px;
+    width: 200px;
+    z-index: 5;
+  }
+
+.car {
+    position: absolute;
+    animation: slide2 10s linear infinite;
+    top: 470px;
+    height: 200px;
+    width: 200px;
+} 
+  
+  @keyframes slide {
+    0% { left: -15%; } 
+    100% { left: 100%; }
+  }
+
+  @keyframes slide2 {
+    0% { left: 100%; } 
+    100% { left: -15%; }
+  }
+
+.road {
+    position: absolute;
+    height: 10px;
+    width: 100vw;
+    left: 0px;
+    border-top: 10px solid black;
+    top: 600px;
+    animation: none;
+}
+
+/* ROUND ONE */
+
+.text1 {
+    color: black;
+    font-family: /*"amatic-sc", */ monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden; 
+    border-right: .15em solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .15em; 
+    animation: 
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+.hello1 {
+    display: none;
+    position: relative;
+    top: -100px;
+}
+
+@keyframes changeBorder {
+    0% { border-color: black; }
+    50% { border-color: rgb(0, 187, 0); }
+    100% { border-color: black; }
+}
+
+/* BOSS 1 */
+
+.text2 {
+    color: black;
+    font-family: /*"amatic-sc", */ monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden; 
+    border-right: .15em solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .15em; 
+    animation: 
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+.hello2 {
+    position: relative;
+    top: -250px;
+}
+
+/* BOSS1 */
+
+.boss1 .smartphone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 350px;
+    width: 350px;
+    opacity: 1;
+}
+
+.boss1 .sim {
+    position: absolute;
+    top: 70%;
+    left: 80%;
+    height: 100px;
+    width: 100px;
+    opacity: 1;
+}
+
+.boss1 .phone {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    width: 250px;
+    opacity: 0;
+    display: none;
+}
+
+.visible {
+    opacity: 1;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.hidden {
+    opacity: 0;
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+.rotate {
+    opacity: 1;
+    animation: rotateAnimation 1s ease-in-out infinite, fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes rotateAnimation {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-30deg); } 
+    100% { transform: rotate(0deg); } 
+  }
+
+
+
+
