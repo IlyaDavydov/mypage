@@ -151,6 +151,9 @@ const sim = document.querySelector('.sim');
 const smartphone = document.querySelector('.smartphone');
 const hello2 = document.querySelector('.hello2');
 const phone = document.querySelector(".phone");
+const boss1 = document.querySelector(".boss1");
+const hello3 = document.querySelector(".hello3");
+const hello4 = document.querySelector(".hello4");
 
 sim.addEventListener('mousedown', function(event) {
     isDragging = true;
@@ -178,16 +181,117 @@ document.addEventListener('mouseup', function(event) {
             setTimeout(() => {
                 sim.style.display = "none";
                 smartphone.style.display = "none";
-                hello2.style.display =  "none";
                 phone.style.display = "flex";
             }, 1100);
             phone.classList.add("rotate");
             setTimeout(() => {
                 phone.style.display = "none";
             }, 3500)
+            hello2.style.display =  "none";
+            boss1.style.display = "none";
         }
     }
 });
+
+/* CV */
+
+let round2Started = true;
+
+const cvbutton = document.querySelector(".cv-button");
+const cv = document.querySelector(".cv");
+cvbutton.addEventListener("click", function() {
+    cv.style.display = "none";
+    cvbutton.style.display = "none";
+    animationContainer.style.display = "flex";
+    plane.style.display = "none";
+    round2Started = true;
+})
+
+/* round 2 */ 
+
+const meteorits = document.querySelectorAll(".meteo");
+let intervalId;
+
+if (round2Started) {
+    intervalId = setInterval(checkCollision, 100);
+    console.log("i");
+}
+
+let meteors = 4;
+meteorits.forEach(m => m.addEventListener("click", function() {
+    m.style.display = "none";
+    meteors--;
+}))
+
+
+function checkCollision() {
+    const carRect = car.getBoundingClientRect();
+
+    meteorits.forEach(m => {
+        const meteoritRect = m.getBoundingClientRect();
+
+        const extendedMeteoritRect = {
+            left: meteoritRect.left + 50,
+            top: meteoritRect.top + 50,
+            right: meteoritRect.right - 50,
+            bottom: meteoritRect.bottom - 50
+        };
+
+        if (carRect.left < extendedMeteoritRect.right &&
+            carRect.right > extendedMeteoritRect.left &&
+            carRect.top < extendedMeteoritRect.bottom &&
+            carRect.bottom > extendedMeteoritRect.top) {
+            meteorits.forEach(m => m.style.animationPlayState = 'paused')
+            setTimeout(() => {
+                meteorits.forEach(m => m.style.animationPlayState = 'running')
+            }, 3000);
+        }
+        if (meteors === 0) {
+            clearInterval(intervalId);
+            hello3.style.display = "none";
+            hello4.style.display = "flex";
+        }
+    });
+}
+
+const sun = document.querySelector(".sun");
+const moon = document.querySelector(".moon");
+const body = document.querySelector("body");
+const justinBeaver = document.querySelector(".justin-beaver");
+const text4 = document.querySelector(".text4");
+const forest1 = document.querySelector(".forest1");
+const forest2 = document.querySelector(".forest2");
+const forest3 = document.querySelector(".forest3");
+
+sun.addEventListener("click", function() {
+    sun.style.display = "none";
+    moon.style.display = "flex";
+    body.style.background = "black";
+    body.style.animation = "none";
+    justinBeaver.style.display = "flex";
+    text4.style.color = "red";
+    text4.textContent = "Now click on Justin Beaver!";
+})
+
+justinBeaver.addEventListener("click", function() {
+    body.style.animation = "background 15s infinite alternate";
+    forest1.style.display = "none";
+    forest2.style.display = "none";
+    forest3.style.display = "none";
+    justinBeaver.style.display = "none";
+    sun.style.display = "none";
+    moon.style.display = "none";
+    hello4.style.display = "none";
+})
+
+
+
+
+
+
+
+
+
 
 
 

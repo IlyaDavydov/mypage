@@ -66,7 +66,7 @@ body {
   }
 
   .animation-container {
-    display: none;
+    display: flex;
   }
 
 .text {
@@ -113,6 +113,7 @@ body {
     height: 200px;
     width: 200px;
     z-index: 5;
+    display: none;
   }
 
 .car {
@@ -194,9 +195,14 @@ body {
 .hello2 {
     position: relative;
     top: -250px;
+    display: none;
 }
 
 /* BOSS1 */
+
+.boss1 {
+    display: none;
+}
 
 .boss1 .smartphone {
     position: absolute;
@@ -259,6 +265,276 @@ body {
     100% { transform: rotate(0deg); } 
   }
 
+/* CV */
+
+.cv {
+    display: none;
+    flex-direction: column;
+    background-color: #eca8f1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.photo {
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    margin-left: 50px;
+    border: 10px solid olivedrab;
+}
+
+.header {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    display: inline;
+    font-family: "amatic-sc", monospace, sans-serif;
+    padding: 0;
+}
+.header2 {
+    display: flex;
+}    
+
+.aboutme {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+    font-size: 24px;
+    gap: 5px;
+    margin-right: 10px;
+}
+
+.aboutme * {
+    margin: 0;
+}
+
+.skills {
+    position: relative;
+    top: -220px;
+    left: 420px;
+    display: flex;
+    font-size: 24px;
+}
+
+.skills * {
+    margin: 0;
+}
+
+.hard-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.soft-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.study {
+    position: relative;
+    top: -170px;
+    display: flex;
+    font-size: 24px;
+    gap: 20px;
+    margin-left: 50px;
+}
+
+.myStudy {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.myStudy * {
+    margin: 0;
+}
+
+.datainfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.datainfo * {
+    margin: 0;
+}
+
+.cv-button {
+    height: 75px;
+    width: 300px;
+    border-radius: 20px;
+    background-color: inherit;
+    border: 10px solid olivedrab;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: olivedrab;
+    position: relative;
+    top: 250px;
+    left: 300px;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.cv-button:hover {
+    border: 10px solid black;
+    color: black;
+    background-color: olivedrab;
+}
+
+/* ROUND 2 */
+
+.hello3 {
+    position: relative;
+    top: -300px; 
+    display: none;
+}
+
+.text3 {
+    color: black;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+.meteorit1, .meteorit2, .meteorit3, .meteorit4 {
+    top: -200px; 
+    left: 100%;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    animation: moveDiagonally 5s linear infinite;
+    display: none;
+}
 
 
 
+.meteorit1 {
+    animation-delay: 0s;
+}
+
+.meteorit2 {
+    animation-delay: 1s;
+}
+
+.meteorit3 {
+    animation-delay: 2s;
+}
+
+.meteorit4 {
+    animation-delay: 3s;
+}
+
+@keyframes moveDiagonally {
+    0% {
+        top: -200px; 
+        left: 100%;  
+    }
+    100% {
+        top: 100vh; 
+        left: -100px; 
+    }
+}
+
+.hello4 {
+    position: relative;
+    top: -300px; 
+    left: 0px
+}
+
+.text4 {
+    color: black;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+/* BOSS 2 */
+.forest1 {
+    position: absolute;
+    left: 300px;
+    height: 300px;
+    width: 300px;
+}
+
+.forest2 {
+    position: absolute;
+    left: 600px;
+    height: 300px;
+    width: 300px;
+}
+
+.forest3 {
+    position: absolute;
+    left: 900px;
+    height: 300px;
+    width: 300px;
+}
+
+.sun {
+    position: absolute;
+    left: 1200px;
+    top: 75px;
+    height: 150px;
+    width: 150px;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, -5px); }
+    50% { transform: translate(5px, 5px); }
+    75% { transform: translate(-5px, 5px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .moon {
+    display: none;
+    position: absolute;
+    left: 1200px;
+    top: 75px;
+    height: 150px;
+    width: 150px;
+} 
+
+.justin-beaver {
+    display: none;
+    position: absolute;
+    left: 860px;
+    top: 450px;
+    height: 75px;
+    width: 75px;
+}
