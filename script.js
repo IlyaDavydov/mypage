@@ -284,7 +284,163 @@ justinBeaver.addEventListener("click", function() {
     hello4.style.display = "none";
 })
 
+/* FORM */
 
+let round3Started = true;
+
+const formbutton = document.querySelector(".form-button");
+const form = document.querySelector(".form-project");
+formbutton.addEventListener("click", function() {
+    form.style.display = "none";
+    formbutton.style.display = "none";
+    animationContainer.style.display = "flex";
+    plane.style.display = "flex";
+    round3Started = true;
+})
+
+const apple1 = document.querySelector(".apple1");
+const apple2 = document.querySelector(".apple2");
+const apple3 = document.querySelector(".apple3");
+const apple4 = document.querySelector(".apple4");
+const apple5 = document.querySelector(".apple5");
+const apple6 = document.querySelector(".apple6");
+const apple7 = document.querySelector(".apple7");
+const apple8 = document.querySelector(".apple8");
+const apple9 = document.querySelector(".apple9");
+
+function fallingApples() {
+    apple2.style.animation = "fall 5s linear infinite";
+    setTimeout(() => {
+        apple5.style.animation = "fall 3s linear infinite";
+    }, 2000);
+    setTimeout(() => {
+        apple9.style.animation = "fall 5s linear infinite";
+    }, 4000);
+    setTimeout(() => {
+        apple7.style.animation = "fall 6s linear infinite";
+    }, 6000);
+    setTimeout(() => {
+        apple4.style.animation = "fall 4s linear infinite";
+    }, 8000);
+    setTimeout(() => {
+        apple1.style.animation = "fall 7s linear infinite";
+    }, 10000);
+    setTimeout(() => {
+        apple8.style.animation = "fall 5s linear infinite";
+    }, 12000);
+    setTimeout(() => {
+        apple6.style.animation = "fall 3s linear infinite";
+    }, 14000);
+    setTimeout(() => {
+        apple3.style.animation = "fall 4s linear infinite";
+    }, 16000);
+}
+
+const basket = document.querySelector(".basket");
+
+const textes3 = ["To access the next project, you need to draw the German flag", "But first, collect as many red, black, and yellow apples as possible",
+"to have the dyes for the flag by controlling the basket with the arrow keys"];
+
+let index3 = 0;
+
+function textChange3() {
+    const hello = document.querySelector(".hello6");
+    const oldText = document.querySelector(".text6");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes3[index3];
+    newText.classList.add("text6");
+    hello.appendChild(newText); 
+    index3 = (index3 + 1) % textes3.length; 
+    setTimeout(textChange3, 4000); 
+}
+
+function moveObject2(object, direction) {
+    const speed = 10; 
+    let left = parseInt(window.getComputedStyle(object).left);
+
+    switch (direction) {
+        case 'left':
+            left -= speed;
+            break;
+        case 'right':
+            left += speed;
+            break;
+    }
+
+    object.style.left = left + 'px';
+}
+
+if (round3Started) {
+    textChange3();
+    fallingApples();
+    document.addEventListener("keydown", function(event) {
+        switch (event.key) {
+            case 'ArrowLeft':
+                moveObject2(basket, 'left');
+                break;
+            case 'ArrowRight':
+                moveObject2(basket, 'right');
+                break;
+        }
+    });
+}
+const apples = document.querySelectorAll(".apple");
+const hello6 = document.querySelector(".hello6");
+const animationText = document.querySelector(".animation-text")
+
+let appleCounter = 9;
+
+function checkCollisionWithBasket() {
+    const basketRect = basket.getBoundingClientRect();
+
+    const offset = 20; 
+
+    const smallerBasketRect = {
+        left: basketRect.left + offset,
+        right: basketRect.right - offset,
+        top: basketRect.top + offset,
+        bottom: basketRect.bottom - offset
+    };
+
+    apples.forEach(apple => {
+        const appleRect = apple.getBoundingClientRect();
+
+        if (smallerBasketRect.left < appleRect.right &&
+            smallerBasketRect.right > appleRect.left &&
+            smallerBasketRect.top < appleRect.bottom &&
+            smallerBasketRect.bottom > appleRect.top) {
+                apple.style.display = "none";
+                appleCounter--;
+        }
+
+        if (appleCounter === 0) {
+            clearInterval(intervalId2);
+            basket.style.display = "none";
+            plane.style.top = "0px";
+            plane.style.display = "flex";
+            apples.display = "none";
+            animationText.style.display = "inline-block";
+            car.style.display = "flex";
+            hello6.style.display = "none";
+            plane.style.animationIterationCount = "1";
+            setTimeout(() => {
+                plane.style.display = "none";
+            }, 5000);
+            animationText.style.animationIterationCount = "1";
+            setTimeout(() => {
+                animationText.style.display = "none";
+            }, 6900);
+        }
+    });
+}
+
+
+let intervalId2;
+
+intervalId2 = setInterval(checkCollisionWithBasket, 1000);
 
 
 
