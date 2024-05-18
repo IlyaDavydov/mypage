@@ -40,17 +40,23 @@ let isFirstClick = false;
 function waitForСarClick() {
     return new Promise((resolve, reject) => {
         isFirstClick = true;
-        car.addEventListener("click", function() {
+
+        function handleClick() {
+            car.removeEventListener("click", handleClick);
             resolve();
-        });
+        }
+
+        car.addEventListener("click", handleClick);
     });
 }
+
 
 /* ROUND ONE */
 
 let firstRoundIsEnded = false; 
 
 const planeControl = (event) => {
+    console.log("isFirstClick ", isFirstClick)
     if (isFirstClick) {
         switch (event.key) {
             case 'ArrowUp':
@@ -60,7 +66,7 @@ const planeControl = (event) => {
                 moveObject(plane, 'down');
                 if (plane.style.top === "460px") {
                     road.style.animation = "changeBorder 1s forwards";
-                    firstRoundIsEnded = true;
+                    firstRoundIsEnded = !firstRoundIsEnded;
                     setTimeout(() => {
                         plane.style.display = "none";
                         road.style.display = "none";
@@ -76,8 +82,7 @@ const planeControl = (event) => {
                 moveObject(plane, 'right');
                 break;
         }
-    } else {
-    }
+    } 
 };
 
 
@@ -112,6 +117,7 @@ waitForСarClick().then(() => {
     plane.style.top = "320px";
     car.style.display = "none";
     document.addEventListener("keydown", function(event) {
+        console.log("first round is ended", firstRoundIsEnded)
         if (!firstRoundIsEnded) {
             planeControl(event);
         }
@@ -170,7 +176,6 @@ document.addEventListener('mousemove', function(event) {
 });
 
 document.addEventListener('mouseup', function(event) {
-    firstRoundIsEnded = true;
     if (firstRoundIsEnded) {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -443,12 +448,269 @@ let intervalId2;
 intervalId2 = setInterval(checkCollisionWithBasket, 1000);
 
 
+/* boss 3 */ 
+
+const slider = document.querySelector(".slider");
+const gridSingature = document.querySelector(".slidecontainer p");
+const grid = document.querySelector(".grid");
+const firstRow = document.querySelector("#first");
+let colorValue = "lightblue";
+let backgroundColorValue = "#496B53";
+const switchElement = document.querySelector('.info0 input[type="checkbox"]');
+const switchElement2 = document.querySelector('.info4 input[type="checkbox"]');
+let flag = 0;
+const redButton = document.querySelector(".red");
+const goldButton = document.querySelector(".gold");
+const blackButton = document.querySelector(".black");
+const info = document.querySelector(".info");
+const slidecontainer = document.querySelector(".slidecontainer");
+
+redButton.addEventListener("click", function() {
+    colorValue = "red";
+})
+
+blackButton.addEventListener("click", function() {
+    colorValue = "black";
+})
+
+goldButton.addEventListener("click", function() {
+    colorValue = "gold";
+})
 
 
+const squares = document.querySelectorAll(".square");
+squares.forEach(square => {
+    square.addEventListener("mouseover", function() {
+        if (mode() == 0) {
+            square.style.backgroundColor = colorValue;
+        }
+        if (mode() == 1) {
+            square.style.backgroundColor = grid.style.backgroundColor;
+        }  
+    });
+});
+
+slider.addEventListener("input", function() {
+    console.log("ok ", slider.value);
+    const currentSquares = document.querySelectorAll(".square");
+    currentSquares.forEach(square => {
+        square.style.backgroundColor = grid.style.backgroundColor;
+    })
+    gridSingature.textContent = slider.value + " x " + slider.value + " grid";
+    let firstRowLength = firstRow.children.length;
+    while (grid.children.length > slider.value) {
+        grid.removeChild(grid.lastChild);
+    }
+    while (grid.children.length < slider.value) {
+        let tempRow = document.createElement("div");
+        tempRow.classList.add("row-initial");
+        tempRow.classList.add("new");
+        for (let i = 0; i < firstRowLength; i++) {
+            let tempSquare = document.createElement("div");
+            tempSquare.classList.add("square");
+            if (mode2() == 1) {
+                tempSquare.style.border = "none";
+            }
+            tempRow.appendChild(tempSquare);
+        }
+        grid.appendChild(tempRow);
+    }
+    const rows = document.querySelectorAll(".row-initial");
+    rows.forEach(row => {
+        tempLength = row.children.length;
+        while (row.children.length > slider.value) {
+            row.removeChild(row.lastChild);
+        }
+        while (row.children.length < slider.value) {
+            let tempSquare = document.createElement("div");
+            tempSquare.classList.add("square");
+            if (mode2() == 1) {
+                tempSquare.style.border = "none";
+            }
+            row.appendChild(tempSquare);
+        }
+    }) 
+
+    const newSquares = document.querySelectorAll(".square");
+    newSquares.forEach(square => {
+    square.addEventListener("mouseover", function() {
+        if (mode() == 0) {
+            square.style.backgroundColor = colorValue;
+        }
+        if (mode() == 1) {
+            square.style.backgroundColor = grid.style.backgroundColor;
+        } 
+        if (slider.value == 9) {
+            let redCounter = 0;
+let goldCounter = 0;
+let blackCounter = 0;
+const colorArray = [];
+let colorFlag = false;
+newSquares.forEach(ns => {
+    if (ns.style.backgroundColor == "black") {
+        colorArray.push(0);
+    } else if (ns.style.backgroundColor == "red") {
+        colorArray.push(1);
+    } else if (ns.style.backgroundColor == "gold") {
+        colorArray.push(2);
+    }
+});
+
+let countColor = 0;
+for (let i = 0; i < 81; i++) {
+    if ((i < 27 && colorArray[i] == 0) || (i >= 27 && i < 54 && colorArray[i] == 1) || (i >= 54 && colorArray[i] == 2)) {
+        countColor++;
+    }
+}
+
+if (countColor === 81) {
+    animationContainer.style.display = "none";
+    grid.style.display = "none";
+    info.style.display = "none";
+    slidecontainer.style.display = "none";
+}
+
+        } 
+    });
+});
+});
+
+switchElement.addEventListener("change", function() {
+    if (this.checked) {
+      flag = 1;
+    } else {
+      flag =  0;
+    }
+  });
+
+  function mode() {
+    if (flag == 1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+  }
+
+  function mode2() {
+    if (flagBorder == 1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+  }
+
+  let flagBorder = 0;
+
+  switchElement2.addEventListener("change", function() {
+    const newSquares = document.querySelectorAll(".square");
+    if (this.checked) {
+        newSquares.forEach(square => {
+            square.style.border = "none";
+            flagBorder = 1;
+        });
+    }
+    else {
+        newSquares.forEach(square => {
+            square.style.border = "solid white 1px";
+            flagBorder = 0;
+        });
+    }   
+  });
+
+  /* sketch */ 
+
+  let round4Started = true;
+
+  const sketchbutton = document.querySelector(".sketch-button");
+  const sketch = document.querySelector(".sketch-project");
+  sketchbutton.addEventListener("click", function() {
+      sketch.style.display = "none";
+      sketchbutton.style.display = "none";
+      animationContainer.style.display = "flex";
+      plane.style.display = "flex";
+      round4Started = true;
+  })
 
 
+const textes4 = ["We are almost at the finish line, with only 2 projects left", "And to access the next one,",
+"you need to spell out the word 'library' with these cards!"];
 
+let index4 = 0;
 
+function textChange4() {
+    const hello = document.querySelector(".hello7");
+    const oldText = document.querySelector(".text7");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes4[index4];
+    newText.classList.add("text7");
+    hello.appendChild(newText); 
+    index4 = (index4 + 1) % textes4.length; 
+    setTimeout(textChange4, 4000); 
+}
+
+if (round4Started) {
+    textChange4();
+}
+
+const libraryCards = document.querySelectorAll('.card4');
+libraryCards.forEach(draggable => {
+    let offsetX4, offsetY4, isDragging4 = false;
+
+    draggable.addEventListener('mousedown', (e) => {
+        offsetX4 = e.clientX - draggable.getBoundingClientRect().left;
+        offsetY4 = e.clientY - draggable.getBoundingClientRect().top;
+        isDragging4 = true;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging4) {
+            draggable.style.left = `${e.clientX - offsetX4}px`;
+            draggable.style.top = `${e.clientY - offsetY4}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging4 = false;
+    });
+});
+
+const lib = document.querySelector(".library-project");
+const hello7 = document.querySelector(".hello7");
+function checkCardOrder() {
+    const cardY = document.querySelector(".card-Y");
+    const cardA = document.querySelector(".card-A");
+    const cardB = document.querySelector(".card-B");
+    const cardR1 = document.querySelector(".card-R1");
+    const cardR2 = document.querySelector(".card-R2");
+    const cardL = document.querySelector(".card-L");
+    const cardI = document.querySelector(".card-I");
+    
+    if ((cardL.getBoundingClientRect().left < cardI.getBoundingClientRect().left &&
+            cardI.getBoundingClientRect().left < cardB.getBoundingClientRect().left &&
+            cardB.getBoundingClientRect().left < cardR1.getBoundingClientRect().left &&
+            cardR1.getBoundingClientRect().left < cardA.getBoundingClientRect().left &&
+            cardA.getBoundingClientRect().left < cardR2.getBoundingClientRect().left &&
+            cardR2.getBoundingClientRect().left < cardY.getBoundingClientRect().left) ||
+        (cardL.getBoundingClientRect().left < cardI.getBoundingClientRect().left &&
+            cardI.getBoundingClientRect().left < cardB.getBoundingClientRect().left &&
+            cardB.getBoundingClientRect().left < cardR2.getBoundingClientRect().left &&
+            cardR2.getBoundingClientRect().left < cardA.getBoundingClientRect().left &&
+            cardA.getBoundingClientRect().left < cardR1.getBoundingClientRect().left &&
+            cardR1.getBoundingClientRect().left < cardY.getBoundingClientRect().left)) {
+        const cardsLibrary = document.querySelectorAll(".card4");
+        cardsLibrary.forEach(c => c.style.display = "none");
+        document.removeEventListener('mousemove', checkCardOrder);
+        lib.style.display = "flex";
+        hello7.style.display = "none";
+    }
+}
+
+document.addEventListener('mousemove', checkCardOrder);
 
 
 

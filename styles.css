@@ -109,13 +109,12 @@ body {
 .plane {
     position: absolute;
     animation: slide 5s linear infinite;
-    /*top: 320px;*/
-    top: 0px;
+    top: 320px;
     height: 200px;
     width: 200px;
     z-index: 5;
-    /*display: none;*/
-    display: flex;
+    display: none;
+    /*display: flex;*/
   }
 
 .car {
@@ -745,7 +744,7 @@ a {
     z-index: 5;
     overflow: hidden;
     text-wrap: nowrap;
-    /*display: none;*/
+    display: none;
     font-family: "amatic-sc", monospace, sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -756,3 +755,556 @@ a {
     0% { left: -58%; } 
     100% { left: 100%; }
   }
+
+  /* BOSS 3 */ 
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.info1, .info2, .info0, .info4 {
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+}
+
+.info1 p, .info2, .info0, .info4 p {
+    color: black;
+    font-size: 12px;
+}
+
+.page {
+    margin-right: 200px;
+    gap: 10px
+}
+  
+
+#colorPicker, #backgroundPicker {
+    width: 25px;
+    height: 25px;
+    overflow: hidden;   
+    background-color: black;
+    margin-left: auto;
+}
+
+.switch {
+    margin-left: auto;
+}
+
+.grid {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    background-color: #496B53;
+    /*display: flex;*/
+    display: none;
+    flex-direction: column;
+    border: solid black 20px;
+    border-radius: 25px;
+}
+
+.row-initial {
+    display: flex;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.new {
+    display: flex;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.square {
+    border: solid white 1px;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slidecontainer {
+    width: 70%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;  
+    background: white;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    display: none;
+}
+
+.black, .red, .gold {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-left: 2px;
+    outline: none;
+    border: none;
+}
+
+.black {
+    background-color: black;
+}
+
+.red {
+    background-color: red;
+}
+
+.gold {
+    background-color: gold;
+}
+
+.slider:hover {
+    opacity: 1; 
+}
+
+.slider::-webkit-slider-thumb { 
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px; 
+    border-radius: 50%; 
+    background: black;
+    cursor: pointer;
+}
+
+.slidecontainer p {
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: 900;
+    color: black;
+    margin-top: 10px;
+    display: none;
+}
+
+.info {
+    margin-top: 120px;
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    font-size: 24px;
+    font-family: monospace;
+    display: none;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider-round:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider-round {
+    background-color: #496B53;
+  }
+  
+  input:focus + .slider-round {
+    box-shadow: 0 0 1px #FF5A60;
+  }
+  
+  input:checked + .slider-round:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider-round {
+    border-radius: 34px;
+  }
+  
+  .slider-round:before {
+    border-radius: 50%;
+  }
+
+  .info0, .info4 {
+    display: flex;
+  }
+
+  /* ETCH A SKETCH */ 
+
+  .sketch-project {
+    display: none;
+    background-color: #eca8f1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace, sans-serif;
+    margin: 0;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.sketch-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+}
+
+.ps {
+    font-weight: 900;
+    font-size: 28px;
+    color: olivedrab;
+}
+
+.about-sketch {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-sketch h1 {
+    position: relative;
+    left: -50px;
+}
+
+.about-sketch * {
+    margin: 0;
+}
+
+.sketch-functional {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.sketch-functional * {
+    margin: 0;
+}
+
+.sketch-functional h1 {
+    position: relative;
+    right: 50px;
+}
+
+.main-link {
+    height: 300px;
+    width: 550px;
+    border-radius: 20px;
+    border: 10px solid olivedrab;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.sketch-project h1 {
+    margin-left: 50px;
+}
+
+.git-link {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+.gitlink {
+    display: flex;
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.sketch-button {
+    height: 75px;
+    width: 300px;
+    border-radius: 20px;
+    background-color: inherit;
+    border: 10px solid olivedrab;
+    /*display: none;*/
+    justify-content: center;
+    align-items: center;
+    color: olivedrab;
+    position: relative;
+    left: 400px;
+    top: 100px;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.sketch-button:hover {
+    border: 10px solid black;
+    color: black;
+    background-color: olivedrab;
+}
+
+/* ROUND 4 */
+
+.hello7 {
+    position: absolute;
+    left: 200px;
+    top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text7 {
+    color: black;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+.card4 {
+    height: 100px;
+    width: 50px;
+    background-color: black;
+    border-radius: 20px;
+    border: 10px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move;
+}
+
+.card4 h1 {
+    font-size: 48px;
+    font-family: "amatic-sc",  monospace, sans-serif;
+    color: white;
+}
+
+.card-Y {
+    position: absolute;
+    left: 15%;
+    top: 40%;
+}
+
+.card-A {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+}
+
+.card-B {
+    position: absolute;
+    left: 35%;
+    top: 40%
+}
+
+.card-R2 {
+    position: absolute;
+    left: 45%;
+    top: 30%;
+}
+
+.card-R1 {
+    position: absolute;
+    left: 55%;
+    top: 40%;
+}
+
+.card-L {
+    position: absolute;
+    left: 65%;
+    top: 50%;
+}
+
+.card-I {
+    position: absolute;
+    left: 75%;
+    top: 40%;
+}
+
+/* LIBRARY */ 
+
+.library-project {
+    display: none;
+    background-color: #eca8f1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace, sans-serif;
+    margin: 0;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.library-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+}
+
+.ps {
+    font-weight: 900;
+    font-size: 28px;
+    color: olivedrab;
+}
+
+.about-library {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-library h1 {
+    position: relative;
+    left: -50px;
+}
+
+.about-library * {
+    margin: 0;
+}
+
+.library-functional {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.library-functional * {
+    margin: 0;
+}
+
+.library-functional h1 {
+    position: relative;
+    right: 50px;
+}
+
+.main-link {
+    height: 300px;
+    width: 550px;
+    border-radius: 20px;
+    border: 10px solid olivedrab;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.library-project h1 {
+    margin-left: 50px;
+}
+
+.git-link {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+.gitlink {
+    display: flex;
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.library-button {
+    height: 75px;
+    width: 300px;
+    border-radius: 20px;
+    background-color: inherit;
+    border: 10px solid olivedrab;
+    /*display: none;*/
+    justify-content: center;
+    align-items: center;
+    color: olivedrab;
+    position: relative;
+    left: 400px;
+    top: 100px;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.library-button:hover {
+    border: 10px solid black;
+    color: black;
+    background-color: olivedrab;
+}
