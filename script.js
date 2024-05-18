@@ -619,7 +619,7 @@ switchElement.addEventListener("change", function() {
     }   
   });
 
-  /* sketch */ 
+  /* SKETCH */ 
 
   let round4Started = true;
 
@@ -633,6 +633,7 @@ switchElement.addEventListener("change", function() {
       round4Started = true;
   })
 
+ /* ROUND 4 */ 
 
 const textes4 = ["We are almost at the finish line, with only 2 projects left", "And to access the next one,",
 "you need to spell out the word 'library' with these cards!"];
@@ -712,5 +713,534 @@ function checkCardOrder() {
 
 document.addEventListener('mousemove', checkCardOrder);
 
+/* LIBRARY */
+
+let round5Started = true;
+
+const librarybutton = document.querySelector(".library-button");
+const library = document.querySelector(".library-project");
+librarybutton.addEventListener("click", function() {
+    library.style.display = "none";
+    librarybutton.style.display = "none";
+    animationContainer.style.display = "flex";
+    plane.style.display = "none";
+    round5Started = true;
+})
+
+/* ROUND 5 */
+
+const textes5 = ["So, we're on the home stretch!", "To access the final project, you need to beat the AI in tic-tac-toe.",
+"But don't worry, it's not very smart."];
+
+let index5 = 0;
+
+function textChange5() {
+    const hello = document.querySelector(".hello8");
+    const oldText = document.querySelector(".text8");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes5[index5];
+    newText.classList.add("text8");
+    hello.appendChild(newText); 
+    index5 = (index5 + 1) % textes5.length; 
+    setTimeout(textChange5, 4000); 
+}
+
+if (round5Started) {
+    textChange5();
+}
+
+/* TIC-TAC-TOE */
+
+/* GAME BOARD */ 
+const gameBoard = (function() {
+    let moves = 0;
+    let boardArray = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+    const getBoardArray = () => {
+        return boardArray;
+    }
+    const changeBoardArray = (index, marker) => { 
+        boardArray[index] =  marker;
+        moves++;
+    }
+    const resetArray = () => {
+        boardArray = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+    }
+    return {
+        getBoardArray,
+        changeBoardArray,
+        resetArray
+    };
+})();
+
+/* PLAYER */ 
+function createPlayer(name, marker, type, score) {
+    let win = false; 
+    const getWin = () => {
+        return win;
+    };
+    const setWin = (result) => {
+        win = result;
+    };
+    return {
+        name,
+        marker,
+        type,
+        score,
+        getWin,
+        setWin 
+    };
+}
+
+/* DEFINE IF A COMBINATION THERE ARE */
+function combination(player) {
+    const board = gameBoard.getBoardArray();
+    const marker = player.marker;
+    const grid0 = document.querySelector(".grid-0");
+    const grid1 = document.querySelector(".grid-1");
+    const grid2 = document.querySelector(".grid-2");
+    const grid3 = document.querySelector(".grid-3");
+    const grid4 = document.querySelector(".grid-4");
+    const grid5 = document.querySelector(".grid-5");
+    const grid6 = document.querySelector(".grid-6");
+    const grid7 = document.querySelector(".grid-7");
+    const grid8 = document.querySelector(".grid-8");
+    const grid0P = document.querySelector(".grid-0 p");
+    const grid1P = document.querySelector(".grid-1 p");
+    const grid2P = document.querySelector(".grid-2 p");
+    const grid3P = document.querySelector(".grid-3 p");
+    const grid4P = document.querySelector(".grid-4 p");
+    const grid5P = document.querySelector(".grid-5 p");
+    const grid6P = document.querySelector(".grid-6 p");
+    const grid7P = document.querySelector(".grid-7 p");
+    const grid8P = document.querySelector(".grid-8 p");
+    if ((board[0] === marker && board[1] === marker && board[2] === marker)) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid0.style.transition = "background-color 2s";
+            grid1.style.transition = "background-color 2s";
+            grid2.style.transition = "background-color 2s";
+            grid0P.style.transition = "transform 2s color 2s";
+            grid1P.style.transition = "transform 2s color 2s";
+            grid2P.style.transition = "transform 2s color 2s";
+            grid0.style.backgroundColor = "#b4cd37";
+            grid1.style.backgroundColor = "#b4cd37";
+            grid2.style.backgroundColor = "#b4cd37";
+            grid0P.style.color = "#f000d0";
+            grid1P.style.color = "#f000d0";
+            grid2P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[3] === marker && board[4] === marker && board[5] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid3.style.transition = "background-color 2s";
+            grid4.style.transition = "background-color 2s";
+            grid5.style.transition = "background-color 2s";
+            grid3P.style.transition = "transform 2s color 2s";
+            grid4P.style.transition = "transform 2s color 2s";
+            grid5P.style.transition = "transform 2s color 2s";
+            grid3.style.backgroundColor = "#b4cd37";
+            grid4.style.backgroundColor = "#b4cd37";
+            grid5.style.backgroundColor = "#b4cd37";
+            grid3P.style.color = "#f000d0";
+            grid4P.style.color = "#f000d0";
+            grid5P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[6] === marker && board[7] === marker && board[8] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid6.style.transition = "background-color 2s";
+            grid7.style.transition = "background-color 2s";
+            grid8.style.transition = "background-color 2s";
+            grid6P.style.transition = "transform 2s color 2s";
+            grid7P.style.transition = "transform 2s color 2s";
+            grid8P.style.transition = "transform 2s color 2s";
+            grid6.style.backgroundColor = "#b4cd37";
+            grid7.style.backgroundColor = "#b4cd37";
+            grid8.style.backgroundColor = "#b4cd37";
+            grid6P.style.color = "#f000d0";
+            grid7P.style.color = "#f000d0";
+            grid8P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[0] === marker && board[3] === marker && board[6] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid0.style.transition = "background-color 2s";
+            grid3.style.transition = "background-color 2s";
+            grid6.style.transition = "background-color 2s";
+            grid0P.style.transition = "transform 2s color 2s";
+            grid3P.style.transition = "transform 2s color 2s";
+            grid6P.style.transition = "transform 2s color 2s";
+            grid0.style.backgroundColor = "#b4cd37";
+            grid3.style.backgroundColor = "#b4cd37";
+            grid6.style.backgroundColor = "#b4cd37";
+            grid0P.style.color = "#f000d0";
+            grid3P.style.color = "#f000d0";
+            grid6P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[1] === marker && board[4] === marker && board[7] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid1.style.transition = "background-color 2s";
+            grid4.style.transition = "background-color 2s";
+            grid7.style.transition = "background-color 2s";
+            grid1P.style.transition = "transform 2s color 2s";
+            grid4P.style.transition = "transform 2s color 2s";
+            grid7P.style.transition = "transform 2s color 2s";
+            grid1.style.backgroundColor = "#b4cd37";
+            grid4.style.backgroundColor = "#b4cd37";
+            grid7.style.backgroundColor = "#b4cd37";
+            grid1P.style.color = "#f000d0";
+            grid4P.style.color = "#f000d0";
+            grid7P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[2] === marker && board[5] === marker && board[8] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid2.style.transition = "background-color 2s";
+            grid5.style.transition = "background-color 2s";
+            grid8.style.transition = "background-color 2s";
+            grid2P.style.transition = "transform 2s color 2s";
+            grid5P.style.transition = "transform 2s color 2s";
+            grid8P.style.transition = "transform 2s color 2s";
+            grid2.style.backgroundColor = "#b4cd37";
+            grid5.style.backgroundColor = "#b4cd37";
+            grid8.style.backgroundColor = "#b4cd37";
+            grid2P.style.color = "#f000d0";
+            grid5P.style.color = "#f000d0";
+            grid8P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[0] === marker && board[4] === marker && board[8] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid0.style.transition = "background-color 2s";
+            grid4.style.transition = "background-color 2s";
+            grid8.style.transition = "background-color 2s";
+            grid0P.style.transition = "transform 2s color 2s";
+            grid4P.style.transition = "transform 2s color 2s";
+            grid8P.style.transition = "transform 2s color 2s";
+            grid0.style.backgroundColor = "#b4cd37";
+            grid4.style.backgroundColor = "#b4cd37";
+            grid8.style.backgroundColor = "#b4cd37";
+            grid0P.style.color = "#f000d0";
+            grid4P.style.color = "#f000d0";
+            grid8P.style.color = "#f000d0";
+        }, 500);
+    }
+    if (board[6] === marker && board[4] === marker && board[2] === marker) {
+        player.setWin(true);
+        setTimeout(() => {
+            grid6.style.transition = "background-color 2s";
+            grid4.style.transition = "background-color 2s";
+            grid2.style.transition = "background-color 2s";
+            grid6P.style.transition = "transform 2s color 2s";
+            grid4P.style.transition = "transform 2s color 2s";
+            grid2P.style.transition = "transform 2s color 2s";
+            grid6.style.backgroundColor = "#b4cd37";
+            grid4.style.backgroundColor = "#b4cd37";
+            grid2.style.backgroundColor = "#b4cd37";
+            grid6P.style.color = "#f000d0";
+            grid4P.style.color = "#f000d0";
+            grid2P.style.color = "#f000d0";
+        }, 500);
+    }
+}
+
+const ttt = document.querySelector(".ttt-project");
+const resultOfTheGame = (player1, player2) => {
+    const grid0 = document.querySelector(".grid-0");
+    const grid1 = document.querySelector(".grid-1");
+    const grid2 = document.querySelector(".grid-2");
+    const grid3 = document.querySelector(".grid-3");
+    const grid4 = document.querySelector(".grid-4");
+    const grid5 = document.querySelector(".grid-5");
+    const grid6 = document.querySelector(".grid-6");
+    const grid7 = document.querySelector(".grid-7");
+    const grid8 = document.querySelector(".grid-8");
+    const grid0P = document.querySelector(".grid-0 p");
+    const grid1P = document.querySelector(".grid-1 p");
+    const grid2P = document.querySelector(".grid-2 p");
+    const grid3P = document.querySelector(".grid-3 p");
+    const grid4P = document.querySelector(".grid-4 p");
+    const grid5P = document.querySelector(".grid-5 p");
+    const grid6P = document.querySelector(".grid-6 p");
+    const grid7P = document.querySelector(".grid-7 p");
+    const grid8P = document.querySelector(".grid-8 p");
+    const winner = document.querySelector(".result p");
+    const resultGrid = document.querySelector(".result");
+    const ngb = document.querySelector(".result .new-game");
+    const ppp = document.querySelector(".result p");
+    if (player1.getWin() === true) {
+        player1Score++;
+        winner.style.whiteSpace = "pre";
+        winner.textContent = player1.name + "  won!";
+        resultGrid.style.backgroundColor = "#b4cd37"
+        resultGrid.style.border = "10px solid #f000d0"
+        resultGrid.style.color = "#f000d0";
+        ngb.style.backgroundColor = "#b4cd37"
+        ngb.style.color = "#f000d0"
+        ngb.style.border = "5px solid #f000d0";
+        ppp.style.color = "#f000d0";
+        const theGridd = document.querySelector(".tic-tac-toe-content");
+        setTimeout(() => {
+            theGridd.style.display = "none";
+            ttt.style.display = "flex";
+        }, 3000);
+        return 'X WON';
+    }
+    else if (player2.getWin() === true) {
+        player2Score++;
+        winner.style.whiteSpace = "pre";
+        winner.textContent = player2.name + "  won!";
+        resultGrid.style.backgroundColor = "#f000d0"
+        resultGrid.style.border = "10px solid #b4cd37"
+        resultGrid.style.color = "#b4cd37";
+        ngb.style.backgroundColor = "#f000d0"
+        ngb.style.color = "#b4cd37"
+        ngb.style.border = "5px solid #b4cd37";
+        ppp.style.color = "#b4cd37";
+        return 'O WON';
+    }
+    else {
+        if (getNumberOfFreeFields(gameBoard.getBoardArray()) === 0) {
+            player1Score++;
+            player2Score++;
+            winner.style.whiteSpace = "pre";
+            winner.textContent = "It's  a  draw!";
+            resultGrid.style.backgroundColor = "yellow"
+            resultGrid.style.border = "10px solid black"
+            resultGrid.style.color = "black";
+            ngb.style.backgroundColor = "yellow"
+            ngb.style.color = "black"
+            ngb.style.border = "5px solid black";
+            ppp.style.color = "black";
+            setTimeout(() => {
+                grid0.style.transition = "background-color 2s";
+                grid0P.style.transition = "transform 2s color 2s";
+                grid0P.style.color = "#f000d0";
+                grid0.style.backgroundColor = "yellow";
+                grid1.style.transition = "background-color 2s";
+                grid1P.style.transition = "transform 2s color 2s";
+                grid1P.style.color = "#f000d0";
+                grid1.style.backgroundColor = "yellow";
+                grid2.style.transition = "background-color 2s";
+                grid2P.style.transition = "transform 2s color 2s";
+                grid2P.style.color = "#f000d0";
+                grid2.style.backgroundColor = "yellow";
+                grid3.style.transition = "background-color 2s";
+                grid3P.style.transition = "transform 2s color 2s";
+                grid3P.style.color = "#f000d0";
+                grid3.style.backgroundColor = "yellow";
+                grid4.style.transition = "background-color 2s";
+                grid4P.style.transition = "transform 2s color 2s";
+                grid4P.style.color = "#f000d0";
+                grid4.style.backgroundColor = "yellow";
+                grid5.style.transition = "background-color 2s";
+                grid5P.style.transition = "transform 2s color 2s";
+                grid5P.style.color = "#f000d0";
+                grid5.style.backgroundColor = "yellow";
+                grid6.style.transition = "background-color 2s";
+                grid6P.style.transition = "transform 2s color 2s";
+                grid6P.style.color = "#f000d0";
+                grid6.style.backgroundColor = "yellow";
+                grid7.style.transition = "background-color 2s";
+                grid7P.style.transition = "transform 2s color 2s";
+                grid7P.style.color = "#f000d0";
+                grid7.style.backgroundColor = "yellow";
+                grid8.style.transition = "background-color 2s";
+                grid8P.style.transition = "transform 2s color 2s";
+                grid8P.style.color = "#f000d0";
+                grid8.style.backgroundColor = "yellow";
+            }, 500);
+            return 'DRAW';
+        }
+        else {
+            return 'KEEP PLAYING'
+        }
+    }        
+}
+
+/* NUMBER OF FREE FIELDS */
+function getNumberOfFreeFields(array) {
+    count = 0;
+    for (const element of array) {
+        if (element === '-') {
+            count++;
+        }
+    }
+    return count;
+}
+
+/* MOVE */
+function moveAI(index, player) {
+    while (gameBoard.getBoardArray()[index] !== '-') {
+        index = (index + 1) % gameBoard.getBoardArray().length; 
+    }
+    const string = `.grid-${index} p`;
+    const field = document.querySelector(string);
+    field.textContent = player.marker;
+    resizeElement(field);
+    gameBoard.changeBoardArray(index, player.marker);
+    if (combination(player)) {
+        player.setWin(true);
+    }
+}
+
+function movePlayer(player) {
+    const gridNow = document.querySelector(".tic-tac-toe-grid");
+    let eventPromise = new Promise((resolve, reject) => {
+        const eventListener = (event) => {
+            console.log("movePlayer")
+            const index = event.target.className.substring(5, 6);
+            const string = `.grid-${index} p`;
+            const string2 = `.grid-${index}`;
+            const div = document.querySelector(string2);
+            const field = document.querySelector(string);
+            if (gameBoard.getBoardArray()[index] !== '-') {
+                reject();
+                gridNow.removeEventListener('click', eventListener);
+            }
+            else {
+                field.textContent = player.marker;
+                resizeElement(field);
+                gameBoard.changeBoardArray(index, player.marker);
+                resolve();
+                gridNow.removeEventListener('click', eventListener);
+            }
+        };
+        gridNow.addEventListener('click', eventListener);
+    });
+    eventPromise.then(() => {
+        if (combination(player)) {
+            player.setWin(true);
+        } 
+    }).catch(() => {
+
+    });
+    return eventPromise;
+}
+
+/* TEST FUNCTION */
+function getRandomNumber() {
+    return Math.floor(Math.random() * 9);
+}
+
+/* OTHER FUNCTIONS */
+function resizeElement(element) {
+    element.classList.add('resize'); 
+}
+
+/* GAME PROCESS */
+
+let player1Score = 0;
+let player2Score = 0;
+const resultDiv = document.querySelector(".result");
+const gridContent = document.querySelector(".tic-tac-toe-grid");
+
+function gameProcess() {
+    /* initially dates*/
+    const player1 = createPlayer("You", 'X', "Player", player1Score);
+    const player2 = createPlayer("AI", 'O', "AI", player2Score);
+    console.log(player1);
+    console.log(player2);
+    let xMove = true;
+    /* game loop */
+    function playTurnPlayervAI() {
+        if (resultOfTheGame(player1, player2) === "KEEP PLAYING") {
+            if (xMove) {
+                movePlayer(player1).then(() => {
+                    xMove = false;
+                    left.classList.remove("jumping");
+                    playTurnPlayervAI();
+                }).catch(() => {
+                    playTurnPlayervAI();
+                });
+            } else {
+                setTimeout(() => {
+                    const index = getRandomNumber();
+                    moveAI(index, player2);
+                    xMove = true;
+                    playTurnPlayervAI();
+                }, 500);
+            }
+        } else {
+            setTimeout(() => {
+                resultDiv.style.display = "flex";
+                gridContent.style.display = "none";
+            }, 2000);
+        }
+    }
+
+    if (player1.type === "Player" && player2.type === "AI") {
+        playTurnPlayervAI();
+    }
+}
+
+/* NEW GAME FUNCTION */
+function newGameFunction() {
+    resultDiv.style.display = "none";
+    gridContent.style.display = "grid";
+    clearFields();
+    gameBoard.moves = 0;
+    gameBoard.resetArray();
+    gameProcess(); 
+}
 
 
+
+const newGame = document.querySelector(".new-game");
+newGame.addEventListener("click", function() {
+    resultDiv.style.display = "none";
+    gridContent.style.display = "grid";
+    newGameFunction();
+})
+
+
+function clearFields() {
+    const mainGrid = document.querySelector(".tic-tac-toe-grid");
+    mainGrid.innerHTML = ''; 
+    for (let i = 0; i < 9; i++) {
+        const helpString = `grid-${i}`;
+        const helpDiv =  document.createElement("div");
+        const helpP = document.createElement("p");
+        helpDiv.style.display = "flex";
+        helpDiv.style.alignItems = "center";
+        helpDiv.style.justifyContent = "center";
+        helpDiv.style.fontSize = "160px";
+        helpDiv.style.color = "#b4cd37";
+        helpDiv.style.fontFamily = "'main-font', sans-serif";
+        helpDiv.style.overflow = "hidden";
+        helpDiv.style.backgroundColor = "#f000d0";
+        helpDiv.style.borderRadius = "15px";
+        helpP.style.transition = "transform 1s";
+        helpDiv.classList.add(helpString);
+        helpDiv.appendChild(helpP);
+        console.log(helpDiv);
+        mainGrid.appendChild(helpDiv);
+    }
+}
+
+if (round5Started) {
+    gameProcess();
+}
+
+/* TIC TAC TOE PROJECT */ 
+
+let gameOver = true;
+
+const tttbutton = document.querySelector(".ttt-button");
+formbutton.addEventListener("click", function() {
+    ttt.style.display = "none";
+    tttbutton.style.display = "none";
+    animationContainer.style.display = "flex";
+    plane.style.display = "flex";
+    gameOver = true;
+})

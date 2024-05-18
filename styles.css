@@ -1103,7 +1103,7 @@ a {
     position: absolute;
     left: 200px;
     top: 50px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -1130,7 +1130,7 @@ a {
     background-color: black;
     border-radius: 20px;
     border: 10px solid white;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     cursor: move;
@@ -1307,4 +1307,354 @@ a {
     border: 10px solid black;
     color: black;
     background-color: olivedrab;
+}
+
+/* ROUND 5 */
+
+.hello8 {
+    position: absolute;
+    left: 200px;
+    top: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.text8 {
+    color: black;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 4s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+/* TIC TAC TOE */ 
+
+/* MAIN CONTENT */
+
+.tic-tac-toe-content {
+    margin-top: -100px;
+    margin-left: -200px;
+    display: none;
+    align-items: center;
+}
+
+.tic-tac-toe-content .tic-tac-toe-grid {
+    display: grid;
+    height: 400px;
+    width: 400px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    padding: 5px;
+    border: 10px solid #b4cd37;
+    border-radius: 20px;
+    background-color: black;
+}
+
+/* result shown */
+.result {
+    display: none;
+    height: 400px;
+    width: 400px;
+    padding: 5px;
+    border: 10px solid #b4cd37;
+    border-radius: 20px;
+    background-color: #f000d0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.result p {
+    font-family: 'main-font', sans-serif;
+    font-size: 32px;
+    color: #b4cd37;
+}
+
+.new-game {
+    height: 50px;
+    width: 150px;
+    background-color: inherit;
+    border-radius: 20px;
+    border: 5px solid #b4cd37;
+    color: #b4cd37;
+    font-size: 24px;
+    font-family: 'main-font', sans-serif;
+}
+
+.new-game:hover, .reset-score:hover {
+    box-shadow: 1px 1px 5px black;
+}
+
+
+.result .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.result img {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 40px;
+}
+
+.tic-tac-toe-grid div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 160px;
+    color: #b4cd37;
+    font-family: 'main-font', sans-serif;
+    overflow: hidden;
+}
+
+.tic-tac-toe-grid div p {
+    transition: transform 1s;
+}
+
+.resize {
+    transform: scale(0.6);
+}
+
+.tic-tac-toe-content .tic-tac-toe-grid div {
+    background-color: #f000d0;
+    border-radius: 15px;
+}
+
+.tic-tac-toe-content .tic-tac-toe-grid div:hover {
+    transform: scale(0.9);
+}
+
+@font-face {
+    font-family: 'logo-font'; 
+    src: url('logo-font.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'main-font'; 
+    src: url('main-font.ttf') format('opentype');
+}
+
+/* TIC TAC TOE */
+
+.ttt-project {
+    display: none;
+    background-color: #eca8f1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace, sans-serif;
+    margin: 0;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.ttt-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+}
+
+.ps {
+    font-weight: 900;
+    font-size: 28px;
+    color: olivedrab;
+}
+
+.about-ttt {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about-ttt h1 {
+    position: relative;
+    left: -50px;
+}
+
+.about-ttt * {
+    margin: 0;
+}
+
+.ttt-functional {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 25px;
+    font-size: 24px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.ttt-functional * {
+    margin: 0;
+}
+
+.ttt-functional h1 {
+    position: relative;
+    right: 50px;
+}
+
+.main-link {
+    height: 300px;
+    width: 550px;
+    border-radius: 20px;
+    border: 10px solid olivedrab;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.ttt-project h1 {
+    margin-left: 50px;
+}
+
+.git-link {
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+.gitlink {
+    display: flex;
+    gap: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.ttt-button {
+    height: 75px;
+    width: 300px;
+    border-radius: 20px;
+    background-color: inherit;
+    border: 10px solid olivedrab;
+    /*display: none;*/
+    justify-content: center;
+    align-items: center;
+    color: olivedrab;
+    position: relative;
+    left: 400px;
+    top: 100px;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.ttt-button:hover {
+    border: 10px solid black;
+    color: black;
+    background-color: olivedrab;
+}
+
+/* THE END */ 
+
+.theEnd {
+    display: flex;
+    flex-direction: column;
+    background-color: #eca8f1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    font-family: "amatic-sc", monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.EndText {
+    font-size: 36px;
+    margin-left: 10%;
+}
+
+.EndLinks {
+    display: flex;
+    gap: 70px;
+    margin-top: 25px;
+    margin-left: 35%;
+}
+
+.EndLinks1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.EndLinks2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-link {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-link > a > img {
+    height: 206px;
+    width: 320px;
+    border-radius: 10px;
+    border: 10px solid olivedrab;
+}
+
+.gittalink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gittalink img {
+    height: 50px;
+    width: 50px;
+}
+
+.gittalink p {
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.cv-repo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+}
+.cv-repo img {
+    height: 300px;
+    width: 300px;
+}
+
+.cv-repo p {
+    font-size: 48px;
 }
