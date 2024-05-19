@@ -66,13 +66,17 @@ const planeControl = (event) => {
                 moveObject(plane, 'down');
                 if (plane.style.top === "460px") {
                     road.style.animation = "changeBorder 1s forwards";
-                    firstRoundIsEnded = !firstRoundIsEnded;
+                    firstRoundIsEnded = true;
                     setTimeout(() => {
                         plane.style.display = "none";
                         road.style.display = "none";
                         hello1.style.display = "none";
                         animationContainer.style.display = "none";
-                    }, 1000) 
+                    }, 1000);
+                    hello2.style.display = "flex";
+                    boss1.style.display = "flex"; 
+                    skipPlane.style.display = "none";
+                    skipSim.style.display = "flex";
                 }
                 break;
             case 'ArrowLeft':
@@ -111,13 +115,37 @@ function moveObject(object, direction) {
     object.style.left = left + 'px';
   }
 
+const skipPlane = document.querySelector(".skip-plane");
+const skipSim = document.querySelector(".skip-sim");
+const skipMeteo = document.querySelector(".skip-meteo");
+const skipBeaver = document.querySelector(".skip-beaver");
+const skipApples = document.querySelector(".skip-apples");
+const skipSketch = document.querySelector(".skip-sketch");
+const skipLibrary = document.querySelector(".skip-library");
+const skipTtt = document.querySelector(".skip-ttt");
+
+skipPlane.addEventListener("click", function() {
+    road.style.animation = "changeBorder 1s forwards";
+    firstRoundIsEnded = true;
+                    setTimeout(() => {
+                        plane.style.display = "none";
+                        road.style.display = "none";
+                        hello1.style.display = "none";
+                        animationContainer.style.display = "none";
+                    }, 1000);
+                    hello2.style.display = "flex";
+                    boss1.style.display = "flex"; 
+                    skipPlane.style.display = "none";
+                    skipSim.style.display = "flex";
+})
+
 waitForСarClick().then(() => {
+    skipPlane.style.display = "flex";
     hello.style.display = "none";
     hello1.style.display = "flex";
     plane.style.top = "320px";
     car.style.display = "none";
     document.addEventListener("keydown", function(event) {
-        console.log("first round is ended", firstRoundIsEnded)
         if (!firstRoundIsEnded) {
             planeControl(event);
         }
@@ -161,6 +189,26 @@ const boss1 = document.querySelector(".boss1");
 const hello3 = document.querySelector(".hello3");
 const hello4 = document.querySelector(".hello4");
 
+skipSim.addEventListener("click", function() {
+    sim.classList.add("hidden");
+        smartphone.classList.add("hidden");
+            setTimeout(() => {
+                sim.style.display = "none";
+                smartphone.style.display = "none";
+                phone.style.display = "flex";
+            }, 1100);
+            phone.classList.add("rotate");
+            setTimeout(() => {
+                phone.style.display = "none";
+            }, 3500)
+            hello2.style.display =  "none";
+            boss1.style.display = "none";
+            cv.style.display = "flex";
+            cvbutton.style.display = "flex";
+            document.removeEventListener("mouseup", fallmeteo);
+            skipSim.style.display = "none";
+})
+
 sim.addEventListener('mousedown', function(event) {
     isDragging = true;
     initialX = event.clientX - offsetX;
@@ -175,7 +223,7 @@ document.addEventListener('mousemove', function(event) {
     }
 });
 
-document.addEventListener('mouseup', function(event) {
+function fallmeteo(event) {
     if (firstRoundIsEnded) {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -194,9 +242,15 @@ document.addEventListener('mouseup', function(event) {
             }, 3500)
             hello2.style.display =  "none";
             boss1.style.display = "none";
+            cv.style.display = "flex";
+            cvbutton.style.display = "flex";
+            document.removeEventListener("mouseup", fallmeteo);
+            skipSim.style.display = "none";
         }
     }
-});
+}
+
+document.addEventListener('mouseup', fallmeteo);
 
 /* CV */
 
@@ -210,9 +264,31 @@ cvbutton.addEventListener("click", function() {
     animationContainer.style.display = "flex";
     plane.style.display = "none";
     round2Started = true;
+    hello3.style.display = "flex";
+    meteorits.forEach(m => m.style.display = "flex");
+    animationContainer.style.display = "flex";
+    road.style.display = "flex";
+    car.style.display = "flex";
+    road.style.animation = "none";
+    skipMeteo.style.display = "flex";
 })
 
 /* round 2 */ 
+
+skipMeteo.addEventListener("click", function() {
+    clearInterval(intervalId);
+            hello3.style.display = "none";
+            hello4.style.display = "flex";
+            forest1.style.display = "flex";
+            forest2.style.display = "flex";
+            forest3.style.display = "flex";
+            sun.style.display = "flex";
+            road.style.animation = "none";
+            plane.style.display = "none";
+            skipMeteo.style.display = "none";
+            meteorits.forEach(m => m.style.display = "none");
+            skipBeaver.style.display = "flex";
+})
 
 const meteorits = document.querySelectorAll(".meteo");
 let intervalId;
@@ -255,6 +331,13 @@ function checkCollision() {
             clearInterval(intervalId);
             hello3.style.display = "none";
             hello4.style.display = "flex";
+            forest1.style.display = "flex";
+            forest2.style.display = "flex";
+            forest3.style.display = "flex";
+            sun.style.display = "flex";
+            road.style.animation = "none";
+            plane.style.display = "none";
+            skipMeteo.style.display = "none";
         }
     });
 }
@@ -287,6 +370,21 @@ justinBeaver.addEventListener("click", function() {
     sun.style.display = "none";
     moon.style.display = "none";
     hello4.style.display = "none";
+    form.style.display = "flex";
+    skipBeaver.style.display = "none";
+})
+
+skipBeaver.addEventListener("click", function() {
+    body.style.animation = "background 15s infinite alternate";
+    forest1.style.display = "none";
+    forest2.style.display = "none";
+    forest3.style.display = "none";
+    justinBeaver.style.display = "none";
+    sun.style.display = "none";
+    moon.style.display = "none";
+    hello4.style.display = "none";
+    form.style.display = "flex";
+    skipBeaver.style.display = "none";
 })
 
 /* FORM */
@@ -299,8 +397,14 @@ formbutton.addEventListener("click", function() {
     form.style.display = "none";
     formbutton.style.display = "none";
     animationContainer.style.display = "flex";
-    plane.style.display = "flex";
+    plane.style.display = "none";
+    car.style.display = "none";
     round3Started = true;
+    hello6.style.display = "flex";
+    apples2.style.display = "flex";
+    apples.forEach(a => a.style.display = "flex");
+    basket.style.display = "flex";
+    skipApples.style.display = "flex";
 })
 
 const apple1 = document.querySelector(".apple1");
@@ -395,13 +499,14 @@ if (round3Started) {
 const apples = document.querySelectorAll(".apple");
 const hello6 = document.querySelector(".hello6");
 const animationText = document.querySelector(".animation-text")
+const apples2 = document.querySelector(".apples");
 
 let appleCounter = 9;
 
 function checkCollisionWithBasket() {
     const basketRect = basket.getBoundingClientRect();
 
-    const offset = 20; 
+    const offset = 10; 
 
     const smallerBasketRect = {
         left: basketRect.left + offset,
@@ -438,6 +543,19 @@ function checkCollisionWithBasket() {
             setTimeout(() => {
                 animationText.style.display = "none";
             }, 6900);
+            grid.style.display = "flex";
+            info.style.display = "flex";
+            slidecontainer.style.display = "flex";
+            slider.style.display = "flex";
+            gridSingature.style.display = "flex";
+            const hello88 = document.querySelector(".hello88");
+            const text88 = document.querySelector(".text88");
+            setTimeout(() => {
+                hello88.style.display = "flex"
+                text88.style.display = "flex"
+            }, 8500);
+            skipApples.style.display = "none";
+            skipSketch.style.display = "flex";
         }
     });
 }
@@ -447,7 +565,36 @@ let intervalId2;
 
 intervalId2 = setInterval(checkCollisionWithBasket, 1000);
 
-
+skipApples.addEventListener("click", function() {
+    clearInterval(intervalId2);
+            basket.style.display = "none";
+            plane.style.top = "0px";
+            plane.style.display = "flex";
+            apples.display = "none";
+            animationText.style.display = "inline-block";
+            car.style.display = "flex";
+            hello6.style.display = "none";
+            plane.style.animationIterationCount = "1";
+            setTimeout(() => {
+                plane.style.display = "none";
+            }, 5000);
+            animationText.style.animationIterationCount = "1";
+            setTimeout(() => {
+                animationText.style.display = "none";
+            }, 6900);
+            grid.style.display = "flex";
+            info.style.display = "flex";
+            slidecontainer.style.display = "flex";
+            slider.style.display = "flex";
+            gridSingature.style.display = "flex";
+            const hello88 = document.querySelector(".hello88");
+            const text88 = document.querySelector(".text88");
+            hello88.style.display = "flex"
+            text88.style.display = "flex"
+            skipApples.style.display = "none";
+            skipSketch.style.display = "flex";
+            apples.forEach(a => a.style.display = "none");
+});
 /* boss 3 */ 
 
 const slider = document.querySelector(".slider");
@@ -562,18 +709,41 @@ for (let i = 0; i < 81; i++) {
         countColor++;
     }
 }
-
 if (countColor === 81) {
     animationContainer.style.display = "none";
     grid.style.display = "none";
     info.style.display = "none";
     slidecontainer.style.display = "none";
+    sketch.style.display = "flex";
+    sketchbutton.style.display = "flex";
+    const hello88 = document.querySelector(".hello88");
+    const text88 = document.querySelector(".text88");
+    hello88.style.display = "none";
+    text88.style.display = "none";
+    plane.style.display = "none";
+    skipSketch.style.display = "none";
 }
-
         } 
     });
 });
 });
+
+skipSketch.addEventListener("click", function() {
+    animationContainer.style.display = "none";
+    grid.style.display = "none";
+    info.style.display = "none";
+    slidecontainer.style.display = "none";
+    sketch.style.display = "flex";
+    sketchbutton.style.display = "flex";
+    const hello88 = document.querySelector(".hello88");
+    const text88 = document.querySelector(".text88");
+    hello88.style.display = "none";
+    text88.style.display = "none";
+    plane.style.display = "none";
+    skipSketch.style.display = "none";
+    const skipAnimText = document.querySelector(".animation-text");
+    skipAnimText.style.display = "none";
+})
 
 switchElement.addEventListener("change", function() {
     if (this.checked) {
@@ -629,8 +799,13 @@ switchElement.addEventListener("change", function() {
       sketch.style.display = "none";
       sketchbutton.style.display = "none";
       animationContainer.style.display = "flex";
-      plane.style.display = "flex";
+      plane.style.display = "none";
       round4Started = true;
+      const cardThis = document.querySelectorAll(".card4");
+      cardThis.forEach(p => p.style.display = "flex");
+      hello7.style.display = "flex";
+      textChange4();
+      skipLibrary.style.display = "flex";
   })
 
  /* ROUND 4 */ 
@@ -652,10 +827,6 @@ function textChange4() {
     hello.appendChild(newText); 
     index4 = (index4 + 1) % textes4.length; 
     setTimeout(textChange4, 4000); 
-}
-
-if (round4Started) {
-    textChange4();
 }
 
 const libraryCards = document.querySelectorAll('.card4');
@@ -708,8 +879,22 @@ function checkCardOrder() {
         document.removeEventListener('mousemove', checkCardOrder);
         lib.style.display = "flex";
         hello7.style.display = "none";
+        library.style.display = "flex";
+        librarybutton.style.display = "flex";
+        skipLibrary.style.display = "none";
     }
 }
+
+skipLibrary.addEventListener("click", function() {
+    const cardsLibrary = document.querySelectorAll(".card4");
+        cardsLibrary.forEach(c => c.style.display = "none");
+        document.removeEventListener('mousemove', checkCardOrder);
+        lib.style.display = "flex";
+        hello7.style.display = "none";
+        library.style.display = "flex";
+        librarybutton.style.display = "flex";
+        skipLibrary.style.display = "none";
+})
 
 document.addEventListener('mousemove', checkCardOrder);
 
@@ -725,6 +910,14 @@ librarybutton.addEventListener("click", function() {
     animationContainer.style.display = "flex";
     plane.style.display = "none";
     round5Started = true;
+    const theGridd = document.querySelector(".tic-tac-toe-content");
+    theGridd.style.display = "flex";
+    const hello8 = document.querySelector(".hello8");
+    const text8 = document.querySelector(".text8");
+    hello8.style.display = "flex";
+    text8.style.display = "flex";
+    textChange5();
+    skipTtt.style.display = "flex";
 })
 
 /* ROUND 5 */
@@ -746,10 +939,6 @@ function textChange5() {
     hello.appendChild(newText); 
     index5 = (index5 + 1) % textes5.length; 
     setTimeout(textChange5, 4000); 
-}
-
-if (round5Started) {
-    textChange5();
 }
 
 /* TIC-TAC-TOE */
@@ -994,6 +1183,7 @@ const resultOfTheGame = (player1, player2) => {
             theGridd.style.display = "none";
             ttt.style.display = "flex";
         }, 3000);
+        skipTtt.style.display = "none";
         return 'X WON';
     }
     else if (player2.getWin() === true) {
@@ -1067,6 +1257,13 @@ const resultOfTheGame = (player1, player2) => {
         }
     }        
 }
+
+skipTtt.addEventListener("click", function() {
+    const theGridd = document.querySelector(".tic-tac-toe-content");
+    theGridd.style.display = "none";
+    ttt.style.display = "flex";
+    skipTtt.style.display = "none";
+})
 
 /* NUMBER OF FREE FIELDS */
 function getNumberOfFreeFields(array) {
@@ -1235,12 +1432,13 @@ if (round5Started) {
 /* TIC TAC TOE PROJECT */ 
 
 let gameOver = true;
+const theEnd = document.querySelector(".theEnd")
 
 const tttbutton = document.querySelector(".ttt-button");
-formbutton.addEventListener("click", function() {
+tttbutton.addEventListener("click", function() {
     ttt.style.display = "none";
     tttbutton.style.display = "none";
-    animationContainer.style.display = "flex";
-    plane.style.display = "flex";
+    animationContainer.style.display = "none";
     gameOver = true;
+    theEnd.style.display = "flex";
 })

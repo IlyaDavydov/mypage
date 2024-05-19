@@ -80,7 +80,7 @@ body {
     white-space: nowrap; 
     margin: 0 auto; 
     letter-spacing: .15em; 
-    display: none;
+    display: flex;
     animation: 
         typing 4s steps(30, end),
         blink-caret .5s step-end infinite;
@@ -113,8 +113,7 @@ body {
     height: 200px;
     width: 200px;
     z-index: 5;
-    display: none;
-    /*display: flex;*/
+    display: flex;
   }
 
 .car {
@@ -739,20 +738,20 @@ a {
 
 .animation-text {
     position: absolute;
-    animation: slide3 6.9s linear infinite;
-    top: 30px;
+    animation: slide3 7s linear infinite;
+    top: 35px;
     z-index: 5;
     overflow: hidden;
     text-wrap: nowrap;
     display: none;
-    font-family: "amatic-sc", monospace, sans-serif;
+    font-family: monospace, sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 50px;
+    font-size: 30px;
   }
 
   @keyframes slide3 {
-    0% { left: -58%; } 
+    0% { left: -63%; } 
     100% { left: 100%; }
   }
 
@@ -1575,7 +1574,7 @@ a {
 /* THE END */ 
 
 .theEnd {
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: #eca8f1;
     position: absolute;
@@ -1657,4 +1656,43 @@ a {
 
 .cv-repo p {
     font-size: 48px;
+}
+
+.hello88 {
+    display: none;
+    position: absolute;
+    left: 300px;
+    top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text88 {
+    display: none;
+    color: black;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+}
+
+.skip {
+    position: absolute;
+    top: 87%;
+    left: 80;
+    background-color: #eca8f1;
+    color:rgb(243, 133, 16);
+    font-size: 40px;
+    border: 10px solid #f000d0;
+    border-radius: 20px;
+    font-family: monospace, sans-serif;
+}
+
+.skip-plane, .skip-sim, .skip-meteo, .skip-beaver, .skip-apples, .skip-sketch, .skip-library, .skip-ttt {
+    display: none;
 }
