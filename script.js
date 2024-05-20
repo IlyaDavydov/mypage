@@ -321,17 +321,29 @@ cvbutton.addEventListener("click", function() {
 
 skipMeteo.addEventListener("click", function() {
     clearInterval(intervalId);
-            hello3.style.display = "none";
             hello4.style.display = "flex";
             forest1.style.display = "flex";
             forest2.style.display = "flex";
             forest3.style.display = "flex";
             sun.style.display = "flex";
-            road.style.animation = "none";
-            plane.style.display = "none";
-            skipMeteo.style.display = "none";
-            meteorits.forEach(m => m.style.display = "none");
             skipBeaver.style.display = "flex";
+            hello4.style.animation = "fadeIn 1.5s forwards";
+            forest1.style.animation = "fadeIn 1.5s forwards";
+            forest2.style.animation = "fadeIn 1.5s forwards";
+            forest3.style.animation = "fadeIn 1.5s forwards";
+            sun.style.animation = "fadeIn 1.5s forwards";
+            skipBeaver.style.animation = "fadeIn 1.5s forwards";
+            hello3.style.animation = "fadeOut 1.5s forwards";
+            road.style.animation = "fadeOut 1.5s forwards";
+            plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+            skipMeteo.style.animation = "fadeOut 1.5s forwards";
+            meteorits.forEach(m => m.style.display = "none");
+            setTimeout(() => {
+                hello3.style.display = "none";
+                road.style.animation = "none";
+                plane.style.display = "none";
+                skipMeteo.style.display = "none";
+            }, 1500)
 })
 
 const meteorits = document.querySelectorAll(".meteo");
@@ -373,15 +385,29 @@ function checkCollision() {
         }
         if (meteors === 0) {
             clearInterval(intervalId);
-            hello3.style.display = "none";
             hello4.style.display = "flex";
             forest1.style.display = "flex";
             forest2.style.display = "flex";
             forest3.style.display = "flex";
             sun.style.display = "flex";
-            road.style.animation = "none";
-            plane.style.display = "none";
-            skipMeteo.style.display = "none";
+            skipBeaver.style.display = "flex";
+            hello4.style.animation = "fadeIn 1.5s forwards";
+            forest1.style.animation = "fadeIn 1.5s forwards";
+            forest2.style.animation = "fadeIn 1.5s forwards";
+            forest3.style.animation = "fadeIn 1.5s forwards";
+            sun.style.animation = "fadeIn 1.5s forwards";
+            skipBeaver.style.animation = "fadeIn 1.5s forwards";
+            hello3.style.animation = "fadeOut 1.5s forwards";
+            road.style.animation = "fadeOut 1.5s forwards";
+            plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+            skipMeteo.style.animation = "fadeOut 1.5s forwards";
+            meteorits.forEach(m => m.style.display = "none");
+            setTimeout(() => {
+                hello3.style.display = "none";
+                road.style.animation = "none";
+                plane.style.display = "none";
+                skipMeteo.style.display = "none";
+            }, 1500)
         }
     });
 }
@@ -407,28 +433,50 @@ sun.addEventListener("click", function() {
 
 justinBeaver.addEventListener("click", function() {
     body.style.animation = "background 15s infinite alternate";
-    forest1.style.display = "none";
-    forest2.style.display = "none";
-    forest3.style.display = "none";
-    justinBeaver.style.display = "none";
-    sun.style.display = "none";
-    moon.style.display = "none";
-    hello4.style.display = "none";
     form.style.display = "flex";
-    skipBeaver.style.display = "none";
+    form.style.animation = "fadeIn 1.5s forwards";
+    forest1.style.animation = "fadeOut 1.5s forwards";
+    forest2.style.animation = "fadeOut 1.5s forwards";
+    forest3.style.animation = "fadeOut 1.5s forwards";
+    justinBeaver.style.animation = "fadeOut 1.5s forwards";
+    sun.style.animation = "fadeOut 1.5s forwards";
+    moon.style.animation = "fadeOut 1.5s forwards";
+    hello4.style.animation = "fadeOut 1.5s forwards";
+    skipBeaver.style.animation = "fadeOut 1.5s forwards";
+    setTimeout(() => {
+        forest1.style.display = "none";
+        forest2.style.display = "none";
+        forest3.style.display = "none";
+        justinBeaver.style.display = "none";
+        sun.style.display = "none";
+        moon.style.display = "none";
+        hello4.style.display = "none";
+        skipBeaver.style.display = "none";
+    }, 1500)
 })
 
 skipBeaver.addEventListener("click", function() {
     body.style.animation = "background 15s infinite alternate";
-    forest1.style.display = "none";
-    forest2.style.display = "none";
-    forest3.style.display = "none";
-    justinBeaver.style.display = "none";
-    sun.style.display = "none";
-    moon.style.display = "none";
-    hello4.style.display = "none";
     form.style.display = "flex";
-    skipBeaver.style.display = "none";
+    form.style.animation = "fadeIn 1.5s forwards";
+    forest1.style.animation = "fadeOut 1.5s forwards";
+    forest2.style.animation = "fadeOut 1.5s forwards";
+    forest3.style.animation = "fadeOut 1.5s forwards";
+    justinBeaver.style.animation = "fadeOut 1.5s forwards";
+    sun.style.animation = "fadeOut 1.5s forwards";
+    moon.style.animation = "fadeOut 1.5s forwards";
+    hello4.style.animation = "fadeOut 1.5s forwards";
+    skipBeaver.style.animation = "fadeOut 1.5s forwards";
+    setTimeout(() => {
+        forest1.style.display = "none";
+        forest2.style.display = "none";
+        forest3.style.display = "none";
+        justinBeaver.style.display = "none";
+        sun.style.display = "none";
+        moon.style.display = "none";
+        hello4.style.display = "none";
+        skipBeaver.style.display = "none";
+    }, 1500)
 })
 
 /* FORM */
@@ -437,18 +485,37 @@ let round3Started = true;
 
 const formbutton = document.querySelector(".form-button");
 const form = document.querySelector(".form-project");
+const text6 = document.querySelector(".text6");
+
 formbutton.addEventListener("click", function() {
-    form.style.display = "none";
-    formbutton.style.display = "none";
-    animationContainer.style.display = "flex";
-    plane.style.display = "none";
-    car.style.display = "none";
     round3Started = true;
+    animationContainer.style.display = "flex";
     hello6.style.display = "flex";
+    text6.style.display = "flex";
     apples2.style.display = "flex";
     apples.forEach(a => a.style.display = "flex");
     basket.style.display = "flex";
     skipApples.style.display = "flex";
+
+    animationContainer.style.animation = "fadeIn 1.5s forwards"
+    text6.style.animation = "fadeIn 1.5s forwards"
+    apples2.style.animation = "fadeIn 1.5s forwards"
+    basket.style.animation = "fadeIn 1.5s forwards"
+    skipApples.style.animation = "fadeIn 1.5s forwards"
+
+    form.style.animation = "fadeOut 1.5s forwards";
+    formbutton.style.animation = "fadeOut 1.5s forwards";
+    plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+    car.style.animation = "fadeOut 1.5s forwards, slide2 10s linear infinite";
+
+    textChange3();
+
+    setTimeout(() => {
+        form.style.display = "none";
+        formbutton.style.display = "none";
+        plane.style.display = "none";
+        car.style.display = "none";
+    }, 1500)
 })
 
 const apple1 = document.querySelector(".apple1");
@@ -527,7 +594,6 @@ function moveObject2(object, direction) {
 }
 
 if (round3Started) {
-    textChange3();
     fallingApples();
     document.addEventListener("keydown", function(event) {
         switch (event.key) {
@@ -575,6 +641,7 @@ function checkCollisionWithBasket() {
             basket.style.display = "none";
             plane.style.top = "0px";
             plane.style.display = "flex";
+            plane.style.animation = "fadeIn 1.5s forwards, slide 5s linear infinite";
             apples.display = "none";
             animationText.style.display = "inline-block";
             car.style.display = "flex";
@@ -611,33 +678,36 @@ intervalId2 = setInterval(checkCollisionWithBasket, 1000);
 
 skipApples.addEventListener("click", function() {
     clearInterval(intervalId2);
-            basket.style.display = "none";
-            plane.style.top = "0px";
-            plane.style.display = "flex";
-            apples.display = "none";
-            animationText.style.display = "inline-block";
-            car.style.display = "flex";
-            hello6.style.display = "none";
-            plane.style.animationIterationCount = "1";
-            setTimeout(() => {
-                plane.style.display = "none";
-            }, 5000);
-            animationText.style.animationIterationCount = "1";
-            setTimeout(() => {
-                animationText.style.display = "none";
-            }, 6900);
-            grid.style.display = "flex";
-            info.style.display = "flex";
-            slidecontainer.style.display = "flex";
-            slider.style.display = "flex";
-            gridSingature.style.display = "flex";
-            const hello88 = document.querySelector(".hello88");
-            const text88 = document.querySelector(".text88");
-            hello88.style.display = "flex"
-            text88.style.display = "flex"
-            skipApples.style.display = "none";
-            skipSketch.style.display = "flex";
-            apples.forEach(a => a.style.display = "none");
+    basket.style.display = "none";
+    plane.style.top = "0px";
+    plane.style.display = "flex";
+    plane.style.animation = "fadeIn 1.5s forwards, slide 5s linear infinite";
+    apples.display = "none";
+    animationText.style.display = "inline-block";
+    car.style.display = "flex";
+    hello6.style.display = "none";
+    apples.forEach(a => a.style.display = "none");
+    plane.style.animationIterationCount = "1";
+    setTimeout(() => {
+        plane.style.display = "none";
+    }, 5000);
+    animationText.style.animationIterationCount = "1";
+    setTimeout(() => {
+        animationText.style.display = "none";
+    }, 6900);
+    grid.style.display = "flex";
+    info.style.display = "flex";
+    slidecontainer.style.display = "flex";
+    slider.style.display = "flex";
+    gridSingature.style.display = "flex";
+    const hello88 = document.querySelector(".hello88");
+    const text88 = document.querySelector(".text88");
+    setTimeout(() => {
+        hello88.style.display = "flex"
+        text88.style.display = "flex"
+    }, 8500);
+    skipApples.style.display = "none";
+    skipSketch.style.display = "flex";
 });
 /* boss 3 */ 
 
@@ -754,18 +824,32 @@ for (let i = 0; i < 81; i++) {
     }
 }
 if (countColor === 81) {
-    animationContainer.style.display = "none";
-    grid.style.display = "none";
-    info.style.display = "none";
-    slidecontainer.style.display = "none";
     sketch.style.display = "flex";
     sketchbutton.style.display = "flex";
+    sketch.style.animation = "fadeIn 1.5s forwards";
+    sketchbutton.style.animation = "fadeIn 1.5s forwards";
     const hello88 = document.querySelector(".hello88");
     const text88 = document.querySelector(".text88");
-    hello88.style.display = "none";
-    text88.style.display = "none";
-    plane.style.display = "none";
-    skipSketch.style.display = "none";
+
+    animationContainer.style.animation = "fadeOut 1.5s forwards";
+    grid.style.animation = "fadeOut 1.5s forwards";
+    info.style.animation = "fadeOut 1.5s forwards";
+    slidecontainer.style.animation = "fadeOut 1.5s forwards";
+    hello88.style.animation = "fadeOut 1.5s forwards";
+    text88.style.animation = "fadeOut 1.5s forwards";
+    plane.style.animation = "fadeOut 1.5s forwards";
+    skipSketch.style.animation = "fadeOut 1.5s forwards";
+
+    setTimeout(() => {
+        animationContainer.style.display = "none";
+        grid.style.display = "none";
+        info.style.display = "none";
+        slidecontainer.style.display = "none";
+        hello88.style.display = "none";
+        text88.style.display = "none";
+        plane.style.display = "none";
+        skipSketch.style.display = "none";
+    })
 }
         } 
     });
@@ -773,20 +857,32 @@ if (countColor === 81) {
 });
 
 skipSketch.addEventListener("click", function() {
-    animationContainer.style.display = "none";
-    grid.style.display = "none";
-    info.style.display = "none";
-    slidecontainer.style.display = "none";
     sketch.style.display = "flex";
     sketchbutton.style.display = "flex";
+    sketch.style.animation = "fadeIn 1.5s forwards";
+    sketchbutton.style.animation = "fadeIn 1.5s forwards";
     const hello88 = document.querySelector(".hello88");
     const text88 = document.querySelector(".text88");
-    hello88.style.display = "none";
-    text88.style.display = "none";
-    plane.style.display = "none";
-    skipSketch.style.display = "none";
-    const skipAnimText = document.querySelector(".animation-text");
-    skipAnimText.style.display = "none";
+
+    animationContainer.style.animation = "fadeOut 1.5s forwards";
+    grid.style.animation = "fadeOut 1.5s forwards";
+    info.style.animation = "fadeOut 1.5s forwards";
+    slidecontainer.style.animation = "fadeOut 1.5s forwards";
+    hello88.style.animation = "fadeOut 1.5s forwards";
+    text88.style.animation = "fadeOut 1.5s forwards";
+    plane.style.animation = "fadeOut 1.5s forwards";
+    skipSketch.style.animation = "fadeOut 1.5s forwards";
+
+    setTimeout(() => {
+        animationContainer.style.display = "none";
+        grid.style.display = "none";
+        info.style.display = "none";
+        slidecontainer.style.display = "none";
+        hello88.style.display = "none";
+        text88.style.display = "none";
+        plane.style.display = "none";
+        skipSketch.style.display = "none";
+    })
 })
 
 switchElement.addEventListener("change", function() {
@@ -840,16 +936,25 @@ switchElement.addEventListener("change", function() {
   const sketchbutton = document.querySelector(".sketch-button");
   const sketch = document.querySelector(".sketch-project");
   sketchbutton.addEventListener("click", function() {
-      sketch.style.display = "none";
-      sketchbutton.style.display = "none";
-      animationContainer.style.display = "flex";
-      plane.style.display = "none";
-      round4Started = true;
+    textChange4();
+    round4Started = true;
       const cardThis = document.querySelectorAll(".card4");
-      cardThis.forEach(p => p.style.display = "flex");
+    animationContainer.style.display = "flex";
+    cardThis.forEach(p => p.style.display = "flex");
       hello7.style.display = "flex";
-      textChange4();
       skipLibrary.style.display = "flex";
+      animationContainer.style.animation = "fadeIn 1.5s forwards";
+    cardThis.forEach(p => p.style.animation = "fadeIn 1.5s forwards");
+      hello7.style.animation = "fadeIn 1.5s forwards";
+      skipLibrary.style.animation = "fadeIn 1.5s forwards";
+      sketch.style.animation = "fadeOut 1.5s forwards";
+      sketchbutton.style.animation = "fadeOut 1.5s forwards";
+      plane.style.animation = "fadeOut 1.5s forwards";
+      setTimeout(() => {
+        sketch.style.display = "none";
+      sketchbutton.style.display = "none";
+      plane.style.display = "none";
+  })   
   })
 
  /* ROUND 4 */ 
@@ -918,26 +1023,42 @@ function checkCardOrder() {
             cardR2.getBoundingClientRect().left < cardA.getBoundingClientRect().left &&
             cardA.getBoundingClientRect().left < cardR1.getBoundingClientRect().left &&
             cardR1.getBoundingClientRect().left < cardY.getBoundingClientRect().left)) {
-        const cardsLibrary = document.querySelectorAll(".card4");
-        cardsLibrary.forEach(c => c.style.display = "none");
-        document.removeEventListener('mousemove', checkCardOrder);
-        lib.style.display = "flex";
-        hello7.style.display = "none";
-        library.style.display = "flex";
-        librarybutton.style.display = "flex";
-        skipLibrary.style.display = "none";
+                const cardsLibrary = document.querySelectorAll(".card4");
+                document.removeEventListener('mousemove', checkCardOrder);
+                library.style.display = "flex";
+                librarybutton.style.display = "flex";
+                lib.style.display = "flex";
+                library.style.animation = "fadeIn 1.5s forwards";
+                librarybutton.style.animation = "fadeIn 1.5s forwards";
+                lib.style.animation = "fadeIn 1.5s forwards";
+                cardsLibrary.forEach(c => c.style.animation = "fadeOut 1.5s forwards");
+                    hello7.style.animation = "fadeOut 1.5s forwards";
+                    skipLibrary.style.animation = "fadeOut 1.5s forwards";
+                setTimeout(() => {
+                    cardsLibrary.forEach(c => c.style.display = "none");
+                    hello7.style.display = "none";
+                    skipLibrary.style.display = "none";
+                }, 1500);
     }
 }
 
 skipLibrary.addEventListener("click", function() {
     const cardsLibrary = document.querySelectorAll(".card4");
+    document.removeEventListener('mousemove', checkCardOrder);
+    library.style.display = "flex";
+    librarybutton.style.display = "flex";
+    lib.style.display = "flex";
+    library.style.animation = "fadeIn 1.5s forwards";
+    librarybutton.style.animation = "fadeIn 1.5s forwards";
+    lib.style.animation = "fadeIn 1.5s forwards";
+    cardsLibrary.forEach(c => c.style.animation = "fadeOut 1.5s forwards");
+        hello7.style.animation = "fadeOut 1.5s forwards";
+        skipLibrary.style.animation = "fadeOut 1.5s forwards";
+    setTimeout(() => {
         cardsLibrary.forEach(c => c.style.display = "none");
-        document.removeEventListener('mousemove', checkCardOrder);
-        lib.style.display = "flex";
         hello7.style.display = "none";
-        library.style.display = "flex";
-        librarybutton.style.display = "flex";
         skipLibrary.style.display = "none";
+    }, 1500);
 })
 
 document.addEventListener('mousemove', checkCardOrder);
@@ -949,19 +1070,32 @@ let round5Started = true;
 const librarybutton = document.querySelector(".library-button");
 const library = document.querySelector(".library-project");
 librarybutton.addEventListener("click", function() {
-    library.style.display = "none";
-    librarybutton.style.display = "none";
-    animationContainer.style.display = "flex";
-    plane.style.display = "none";
     round5Started = true;
+    textChange5();
     const theGridd = document.querySelector(".tic-tac-toe-content");
-    theGridd.style.display = "flex";
     const hello8 = document.querySelector(".hello8");
     const text8 = document.querySelector(".text8");
+    animationContainer.style.display = "flex";
+    theGridd.style.display = "flex";
     hello8.style.display = "flex";
     text8.style.display = "flex";
-    textChange5();
     skipTtt.style.display = "flex";
+
+    animationContainer.style.animation = "fadeIn 1.5s forwards";
+    theGridd.style.animation = "fadeIn 1.5s forwards";
+    hello8.style.animation = "fadeIn 1.5s forwards";
+    text8.style.animation = "fadeIn 1.5s forwards";
+    skipTtt.style.animation = "fadeIn 1.5s forwards";
+
+    library.style.animation = "fadeOut 1.5s forwards";
+    librarybutton.style.animation = "fadeOut 1.5s forwards";
+    plane.style.animation = "fadeOut 1.5s forwards";
+
+    setTimeout(() => {
+        library.style.display = "none";
+        librarybutton.style.display = "none";
+        plane.style.display = "none";
+    }, 1500);
 })
 
 /* ROUND 5 */

@@ -724,17 +724,15 @@ a {
 }
 
 .hello6 {
-    display: none;
     position: absolute;
     left: 200px;
     top: 50px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
 
 .text6 {
-    display: none;
     color: black;
     font-family: monospace, sans-serif;
     font-weight: 700;
