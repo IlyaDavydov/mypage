@@ -67,16 +67,24 @@ const planeControl = (event) => {
                 if (plane.style.top === "460px") {
                     road.style.animation = "changeBorder 1s forwards";
                     firstRoundIsEnded = true;
+                    plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+                    road.style.animation = "fadeOut 1.5s forwards";
+                    hello1.style.animation = "fadeOut 1.5s forwards";
+                    animationContainer.style.animation = "fadeOut 1.5s forwards";
+                    skipPlane.style.animation = "fadeOut 1.5s forwards";
+                    hello2.style.display = "flex";
+                    boss1.style.display = "flex"; 
+                    skipSim.style.display = "flex";
+                    hello2.style.animation = "fadeIn 1.5s forwards";
+                    boss1.style.animation = "fadeIn 1.5s forwards";
+                    skipSim.style.animation = "fadeIn 1.5s forwards";
                     setTimeout(() => {
                         plane.style.display = "none";
                         road.style.display = "none";
                         hello1.style.display = "none";
                         animationContainer.style.display = "none";
-                    }, 1000);
-                    hello2.style.display = "flex";
-                    boss1.style.display = "flex"; 
-                    skipPlane.style.display = "none";
-                    skipSim.style.display = "flex";
+                        skipPlane.style.display = "none";
+                    }, 1500);
                 }
                 break;
             case 'ArrowLeft':
@@ -126,25 +134,39 @@ const skipTtt = document.querySelector(".skip-ttt");
 
 skipPlane.addEventListener("click", function() {
     road.style.animation = "changeBorder 1s forwards";
-    firstRoundIsEnded = true;
+                    firstRoundIsEnded = true;
+                    plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+                    road.style.animation = "fadeOut 1.5s forwards";
+                    hello1.style.animation = "fadeOut 1.5s forwards";
+                    animationContainer.style.animation = "fadeOut 1.5s forwards";
+                    skipPlane.style.animation = "fadeOut 1.5s forwards";
+                    hello2.style.display = "flex";
+                    boss1.style.display = "flex"; 
+                    skipSim.style.display = "flex";
+                    hello2.style.animation = "fadeIn 1.5s forwards";
+                    boss1.style.animation = "fadeIn 1.5s forwards";
+                    skipSim.style.animation = "fadeIn 1.5s forwards";
                     setTimeout(() => {
                         plane.style.display = "none";
                         road.style.display = "none";
                         hello1.style.display = "none";
                         animationContainer.style.display = "none";
-                    }, 1000);
-                    hello2.style.display = "flex";
-                    boss1.style.display = "flex"; 
-                    skipPlane.style.display = "none";
-                    skipSim.style.display = "flex";
+                        skipPlane.style.display = "none";
+                    }, 1500);
 })
 
 waitForСarClick().then(() => {
+    hello.style.animation = "fadeOut 1.5s forwards";
     skipPlane.style.display = "flex";
-    hello.style.display = "none";
+    hello1.style.animation = "fadeIn 1.5s forwards";
+    skipPlane.style.animation = "fadeIn 1.5s forwards";
     hello1.style.display = "flex";
     plane.style.top = "320px";
-    car.style.display = "none";
+    car.style.animation = "fadeOut 1.5s forwards, slide2 10s linear infinite";
+    setTimeout(() => {
+        hello.style.display = "none";
+        car.style.display = "none";
+    }, 1500);
     document.addEventListener("keydown", function(event) {
         if (!firstRoundIsEnded) {
             planeControl(event);
@@ -190,23 +212,27 @@ const hello3 = document.querySelector(".hello3");
 const hello4 = document.querySelector(".hello4");
 
 skipSim.addEventListener("click", function() {
-    sim.classList.add("hidden");
-        smartphone.classList.add("hidden");
-            setTimeout(() => {
-                sim.style.display = "none";
-                smartphone.style.display = "none";
-                phone.style.display = "flex";
-            }, 1100);
-            phone.classList.add("rotate");
-            setTimeout(() => {
-                phone.style.display = "none";
-            }, 3500)
-            hello2.style.display =  "none";
+    document.removeEventListener("mouseup", fallmeteo);
+    phone.style.display = "flex";
+    sim.style.animation = "fadeOut 1.5s forwards";
+    smartphone.style.animation = "fadeOut 1.5s forwards";
+    skipSim.style.animation = "fadeOut 1.5s forwards";
+    hello2.style.animation = "fadeOut 1.5s forwards";
+    phone.style.animation = "rotateAnimation 1.5s ease-in-out infinite, fadeIn 1.5s forwards";
+    setTimeout(() => {
+        sim.style.display = "none";
+        smartphone.style.display = "none";
+        skipSim.style.display = "none";
+        hello2.style.display =  "none";
+        cv.style.display = "flex";
+        cvbutton.style.display = "flex";
+        cv.style.animation = "fadeIn 1.5s forwards";
+        cvbutton.style.animation = "fadeIn 1.5s forwards";
+        boss1.style.animation = "fadeOut 1.5s forwards";
+    }, 1500);
+    setTimeout(() => {
             boss1.style.display = "none";
-            cv.style.display = "flex";
-            cvbutton.style.display = "flex";
-            document.removeEventListener("mouseup", fallmeteo);
-            skipSim.style.display = "none";
+        }, 3000)        
 })
 
 sim.addEventListener('mousedown', function(event) {
@@ -229,23 +255,27 @@ function fallmeteo(event) {
         const screenHeight = window.innerHeight;
         isDragging = false;
         if (event.clientX > screenWidth * 0.4 && event.clientX < screenWidth * 0.6 && event.clientY > screenHeight * 0.35 && event.clientY < screenHeight * 0.65) {
-            sim.classList.add("hidden");
-            smartphone.classList.add("hidden");
-            setTimeout(() => {
-                sim.style.display = "none";
-                smartphone.style.display = "none";
-                phone.style.display = "flex";
-            }, 1100);
-            phone.classList.add("rotate");
-            setTimeout(() => {
-                phone.style.display = "none";
-            }, 3500)
-            hello2.style.display =  "none";
-            boss1.style.display = "none";
-            cv.style.display = "flex";
-            cvbutton.style.display = "flex";
             document.removeEventListener("mouseup", fallmeteo);
-            skipSim.style.display = "none";
+    phone.style.display = "flex";
+    sim.style.animation = "fadeOut 1.5s forwards";
+    smartphone.style.animation = "fadeOut 1.5s forwards";
+    skipSim.style.animation = "fadeOut 1.5s forwards";
+    hello2.style.animation = "fadeOut 1.5s forwards";
+    phone.style.animation = "rotateAnimation 1.5s ease-in-out infinite, fadeIn 1.5s forwards";
+    setTimeout(() => {
+        sim.style.display = "none";
+        smartphone.style.display = "none";
+        skipSim.style.display = "none";
+        hello2.style.display =  "none";
+        cv.style.display = "flex";
+        cvbutton.style.display = "flex";
+        cv.style.animation = "fadeIn 1.5s forwards";
+        cvbutton.style.animation = "fadeIn 1.5s forwards";
+        boss1.style.animation = "fadeOut 1.5s forwards";
+    }, 1500);
+    setTimeout(() => {
+            boss1.style.display = "none";
+        }, 3000)     
         }
     }
 }
@@ -259,18 +289,32 @@ let round2Started = true;
 const cvbutton = document.querySelector(".cv-button");
 const cv = document.querySelector(".cv");
 cvbutton.addEventListener("click", function() {
-    cv.style.display = "none";
-    cvbutton.style.display = "none";
-    animationContainer.style.display = "flex";
-    plane.style.display = "none";
     round2Started = true;
+    animationContainer.style.display = "flex";
     hello3.style.display = "flex";
     meteorits.forEach(m => m.style.display = "flex");
     animationContainer.style.display = "flex";
     road.style.display = "flex";
     car.style.display = "flex";
-    road.style.animation = "none";
     skipMeteo.style.display = "flex";
+
+    animationContainer.style.animation = "fadeIn 1.5s forwards";
+    hello3.style.animation = "fadeIn 1.5s forwards";
+    animationContainer.style.animation = "fadeIn 1.5s forwards";
+    road.style.animation = "fadeIn 1.5s forwards";
+    car.style.animation = "fadeIn 1.5s forwards, slide2 10s linear infinite";
+    skipMeteo.style.animation = "fadeIn 1.5s forwards";
+
+    cv.style.animation = "fadeOut 1.5s forwards";
+        cvbutton.style.animation = "fadeOut 1.5s forwards";
+        plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
+        road.style.animation = "fadeOut 1.5s forwards";
+    setTimeout(() => {
+        cv.style.display = "none";
+        cvbutton.style.display = "none";
+        plane.style.display = "none";
+        road.style.animation = "none";
+    }, 1500)
 })
 
 /* round 2 */ 

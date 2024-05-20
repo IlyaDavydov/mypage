@@ -86,6 +86,24 @@ body {
         blink-caret .5s step-end infinite;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 .hello {
     position: relative;
     top: -100px;
@@ -245,10 +263,6 @@ body {
     animation: fadeOut 3s ease-in-out forwards;
 }
 
-.rotate {
-    opacity: 1;
-    animation: rotateAnimation 1s ease-in-out infinite, fadeIn 1s ease-in-out forwards;
-}
 
 @keyframes fadeIn {
     from { opacity: 0; }
