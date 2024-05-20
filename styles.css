@@ -182,9 +182,9 @@ body {
 }
 
 .hello1 {
-    display: none;
     position: relative;
-    top: -100px;
+    top: -250px;
+    display: none;
 }
 
 @keyframes changeBorder {
@@ -414,26 +414,26 @@ body {
 
 /* ROUND 2 */
 
-.hello3 {
-    position: relative;
-    top: -300px; 
-    display: none;
-}
-
 .text3 {
     color: black;
-    font-family: monospace, sans-serif;
+    font-family: /*"amatic-sc", */ monospace, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 26px;
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
+    overflow: hidden; 
+    border-right: .15em solid orange; 
+    white-space: nowrap; 
     margin: 0 auto;
-    letter-spacing: .15em;
-    animation:
-        typing 4s steps(30, end),
+    letter-spacing: .15em; 
+    animation: 
+        typing 1s steps(30, end),
         blink-caret .5s step-end infinite;
+}
+
+.hello3 {
+    position: relative;
+    top: -250px;
+    display: none;
 }
 
 .meteorit1, .meteorit2, .meteorit3, .meteorit4 {

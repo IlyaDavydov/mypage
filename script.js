@@ -4,10 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
     textChange();
 });
 
-const textes = ["Hello! My name is Ilia, I'm a computer science student at TU Darmstadt", 'I suggest you play a game with me about my interactive CV.', 'The game is simple: there will be 5 rounds in total.', 
-    'In each round, you have to complete 2 simple tasks', 'One just for fun, the other related to one of my projects.', 
-    'At the end of each round, you will receive either some information about me', 'or a link to a project associated with that round.', 
-    'Good luck! Click on the car to start'
+const textes = ["Hello! My name is Ilia, I'm a computer science student at TU Darmstadt", 'I suggest you play a game with me about my interactive CV.', 'The rules of the game are very simple', 
+    'complete small tasks to get more information about me or my projects', 'There will be around 8-9 mini-tasks in total', 
+    "Let's get started! To do this, click on the car."
 ];
 
 let index = 0;
@@ -50,6 +49,26 @@ function waitForСarClick() {
     });
 }
 
+const textes9 = ["To start, let's get acquainted. For this, you need to call me",
+"But wait... I see you have airplane mode on", "Let's land the plane smoothly using the arrow keys first so we can have a connection" ];
+
+let index9 = 0;
+
+function textChange9() {
+    const hello = document.querySelector(".hello1");
+    const oldText = document.querySelector(".text1");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes9[index9];
+    newText.classList.add("text1");
+    hello.appendChild(newText); 
+    index9 = index9 + 1; 
+    if (index9 < textes9.length) {
+        setTimeout(textChange9, 4500);
+    }
+}
 
 /* ROUND ONE */
 
@@ -155,18 +174,23 @@ skipPlane.addEventListener("click", function() {
                     }, 1500);
 })
 
+const text1 = document.querySelector(".text1");
+
 waitForСarClick().then(() => {
     hello.style.animation = "fadeOut 1.5s forwards";
     skipPlane.style.display = "flex";
     hello1.style.animation = "fadeIn 1.5s forwards";
+    text1.style.animation = "fadeIn 1.5s forwards";
     skipPlane.style.animation = "fadeIn 1.5s forwards";
     hello1.style.display = "flex";
+    text1.style.display = "flex";
     plane.style.top = "320px";
     car.style.animation = "fadeOut 1.5s forwards, slide2 10s linear infinite";
     setTimeout(() => {
         hello.style.display = "none";
         car.style.display = "none";
     }, 1500);
+    textChange9();
     document.addEventListener("keydown", function(event) {
         if (!firstRoundIsEnded) {
             planeControl(event);
@@ -175,8 +199,8 @@ waitForСarClick().then(() => {
 })
 
 /* BOSS 1 */
-const textes2 = ["Congratulations, you did it!", "Now you need to move the SIM card to the center of the phone to call me",
- "and I'll provide more information about myself"];
+const textes2 = ["Congratulations, you did it!", "Now you need to call me and I'll provide more information about myself",
+ "For this, insert the SIM card into the center of the phone"];
  let index2 = 0;
 
  function textChange2() {
@@ -190,7 +214,7 @@ const textes2 = ["Congratulations, you did it!", "Now you need to move the SIM c
      newText.classList.add("text2");
      hello.appendChild(newText); 
      index2 = (index2 + 1) % textes2.length; 
-     setTimeout(textChange2, 4000); 
+     setTimeout(textChange2, 4500); 
  }
 
 /* BOSS 2 */ 
@@ -284,7 +308,28 @@ document.addEventListener('mouseup', fallmeteo);
 
 /* CV */
 
+const textes10 = ["Okay, now...", "WAIT, WHAT? A METEOR SHOWER",
+"SAVE THE CAR BY CLICKING ON THE METEORS"];
+
+let index10 = 0;
+
+function textChange10() {
+    const hello = document.querySelector(".hello3");
+    const oldText = document.querySelector(".text3");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes10[index10];
+    newText.classList.add("text3");
+    hello.appendChild(newText); 
+    index10 = (index10 + 1) % textes10.length; 
+    setTimeout(textChange10, 1500); 
+}
+
 let round2Started = true;
+
+const text3 = document.querySelector(".text3");
 
 const cvbutton = document.querySelector(".cv-button");
 const cv = document.querySelector(".cv");
@@ -292,6 +337,7 @@ cvbutton.addEventListener("click", function() {
     round2Started = true;
     animationContainer.style.display = "flex";
     hello3.style.display = "flex";
+    text3.style.display = "flex";
     meteorits.forEach(m => m.style.display = "flex");
     animationContainer.style.display = "flex";
     road.style.display = "flex";
@@ -300,6 +346,7 @@ cvbutton.addEventListener("click", function() {
 
     animationContainer.style.animation = "fadeIn 1.5s forwards";
     hello3.style.animation = "fadeIn 1.5s forwards";
+    text3.style.animation = "fadeIn 1.5s forwards";
     animationContainer.style.animation = "fadeIn 1.5s forwards";
     road.style.animation = "fadeIn 1.5s forwards";
     car.style.animation = "fadeIn 1.5s forwards, slide2 10s linear infinite";
@@ -309,6 +356,8 @@ cvbutton.addEventListener("click", function() {
         cvbutton.style.animation = "fadeOut 1.5s forwards";
         plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
         road.style.animation = "fadeOut 1.5s forwards";
+
+    textChange10();   
     setTimeout(() => {
         cv.style.display = "none";
         cvbutton.style.display = "none";
@@ -322,16 +371,19 @@ cvbutton.addEventListener("click", function() {
 skipMeteo.addEventListener("click", function() {
     clearInterval(intervalId);
             hello4.style.display = "flex";
+            text4.style.display = "flex";
             forest1.style.display = "flex";
             forest2.style.display = "flex";
             forest3.style.display = "flex";
             sun.style.display = "flex";
             skipBeaver.style.display = "flex";
+            textChange77();
             hello4.style.animation = "fadeIn 1.5s forwards";
+            text4.style.animation = "fadeIn 1.5s forwards";
             forest1.style.animation = "fadeIn 1.5s forwards";
             forest2.style.animation = "fadeIn 1.5s forwards";
             forest3.style.animation = "fadeIn 1.5s forwards";
-            sun.style.animation = "fadeIn 1.5s forwards";
+            sun.style.animation = "fadeIn 1.5s forwards,  shake 0.5s ease-in-out infinite";
             skipBeaver.style.animation = "fadeIn 1.5s forwards";
             hello3.style.animation = "fadeOut 1.5s forwards";
             road.style.animation = "fadeOut 1.5s forwards";
@@ -360,6 +412,24 @@ meteorits.forEach(m => m.addEventListener("click", function() {
     meteors--;
 }))
 
+const textes77 = ["Phew... What was that... What a situation.", "Alright, Justin Beaver will tell you the information about the next project.",
+"But first, you need to find and click on him :)"];
+
+let index77 = 0;
+
+function textChange77() {
+    const hello = document.querySelector(".hello4");
+    const oldText = document.querySelector(".text4");
+    if (oldText) {
+        hello.removeChild(oldText); 
+    }
+    const newText = document.createElement("h1"); 
+    newText.textContent = textes77[index77];
+    newText.classList.add("text4");
+    hello.appendChild(newText); 
+    index77 = (index77 + 1) % textes77.length; 
+    setTimeout(textChange77, 4500); 
+}
 
 function checkCollision() {
     const carRect = car.getBoundingClientRect();
@@ -386,21 +456,24 @@ function checkCollision() {
         if (meteors === 0) {
             clearInterval(intervalId);
             hello4.style.display = "flex";
+            text4.style.display = "flex";
             forest1.style.display = "flex";
             forest2.style.display = "flex";
             forest3.style.display = "flex";
             sun.style.display = "flex";
             skipBeaver.style.display = "flex";
             hello4.style.animation = "fadeIn 1.5s forwards";
+            text4.style.animation = "fadeIn 1.5s forwards";
             forest1.style.animation = "fadeIn 1.5s forwards";
             forest2.style.animation = "fadeIn 1.5s forwards";
             forest3.style.animation = "fadeIn 1.5s forwards";
-            sun.style.animation = "fadeIn 1.5s forwards";
+            sun.style.animation = "fadeIn 1.5s forwards,  shake 0.5s ease-in-out infinite";
             skipBeaver.style.animation = "fadeIn 1.5s forwards";
             hello3.style.animation = "fadeOut 1.5s forwards";
             road.style.animation = "fadeOut 1.5s forwards";
             plane.style.animation = "fadeOut 1.5s forwards, slide 5s linear infinite";
             skipMeteo.style.animation = "fadeOut 1.5s forwards";
+            textChange77();
             meteorits.forEach(m => m.style.display = "none");
             setTimeout(() => {
                 hello3.style.display = "none";
@@ -427,8 +500,6 @@ sun.addEventListener("click", function() {
     body.style.background = "black";
     body.style.animation = "none";
     justinBeaver.style.display = "flex";
-    text4.style.color = "red";
-    text4.textContent = "Now click on Justin Beaver!";
 })
 
 justinBeaver.addEventListener("click", function() {
@@ -574,7 +645,7 @@ function textChange3() {
     newText.classList.add("text6");
     hello.appendChild(newText); 
     index3 = (index3 + 1) % textes3.length; 
-    setTimeout(textChange3, 4000); 
+    setTimeout(textChange3, 4500); 
 }
 
 function moveObject2(object, direction) {
@@ -975,7 +1046,7 @@ function textChange4() {
     newText.classList.add("text7");
     hello.appendChild(newText); 
     index4 = (index4 + 1) % textes4.length; 
-    setTimeout(textChange4, 4000); 
+    setTimeout(textChange4, 4500); 
 }
 
 const libraryCards = document.querySelectorAll('.card4');
@@ -1116,7 +1187,7 @@ function textChange5() {
     newText.classList.add("text8");
     hello.appendChild(newText); 
     index5 = (index5 + 1) % textes5.length; 
-    setTimeout(textChange5, 4000); 
+    setTimeout(textChange5, 4500); 
 }
 
 /* TIC-TAC-TOE */
@@ -1357,11 +1428,14 @@ const resultOfTheGame = (player1, player2) => {
         ngb.style.border = "5px solid #f000d0";
         ppp.style.color = "#f000d0";
         const theGridd = document.querySelector(".tic-tac-toe-content");
+        ttt.style.display = "flex";
+        ttt.style.animation = "fadeIn 1.5s forwards";
+        theGridd.style.display = "none";
+        skipTtt.style.display = "none";
         setTimeout(() => {
             theGridd.style.display = "none";
-            ttt.style.display = "flex";
-        }, 3000);
-        skipTtt.style.display = "none";
+            skipTtt.style.display = "none";
+        }, 1500)
         return 'X WON';
     }
     else if (player2.getWin() === true) {
@@ -1438,9 +1512,14 @@ const resultOfTheGame = (player1, player2) => {
 
 skipTtt.addEventListener("click", function() {
     const theGridd = document.querySelector(".tic-tac-toe-content");
-    theGridd.style.display = "none";
     ttt.style.display = "flex";
-    skipTtt.style.display = "none";
+        ttt.style.animation = "fadeIn 1.5s forwards";
+        theGridd.style.display = "none";
+        skipTtt.style.display = "none";
+        setTimeout(() => {
+            theGridd.style.display = "none";
+            skipTtt.style.display = "none";
+        }, 1500)
 })
 
 /* NUMBER OF FREE FIELDS */
@@ -1614,9 +1693,15 @@ const theEnd = document.querySelector(".theEnd")
 
 const tttbutton = document.querySelector(".ttt-button");
 tttbutton.addEventListener("click", function() {
-    ttt.style.display = "none";
-    tttbutton.style.display = "none";
-    animationContainer.style.display = "none";
     gameOver = true;
     theEnd.style.display = "flex";
+    theEnd.style.animation = "fadeIn 1.5s forwards";
+    ttt.style.animation = "fadeOut 1.5s forwards";
+    tttbutton.style.animation = "fadeOut 1.5s forwards";
+    animationContainer.style.animation = "fadeOut 1.5s forwards";
+    setTimeout(() => {
+        ttt.style.display = "none";
+        tttbutton.style.display = "none";
+        animationContainer.style.display = "none";
+    }, 1500);
 })
